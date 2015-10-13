@@ -1,6 +1,8 @@
 package com.amdudda;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Stack;
 
 /**
@@ -28,6 +30,10 @@ public class Deck {
                 draw_pile.add(new Card(j,i));
             } // end run through suits
         }  // end run through card numbers
+
+        // shuffle the deck
+        Collections.shuffle(draw_pile);
+
     }  // end constructor
 
     // getter for deck
@@ -37,5 +43,8 @@ public class Deck {
     }
 
     // misc methods
-
+    public Card drawCard(){
+        // draw a card from the Deck
+        return this.draw_pile.pop();
+    }
 }

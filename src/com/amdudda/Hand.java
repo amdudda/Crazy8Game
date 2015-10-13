@@ -13,13 +13,12 @@ public class Hand {
     public static final int START_SIZE = 5;
 
     // Constructor
-    // TODO: this seeds a bunch of cards from the draw pile - need to code that first
+    // Done: this seeds a bunch of cards from the draw pile - need to code that first
     public Hand(Deck d) {
-        Stack<Card> drawpile = d.getDeck();
         this.hand = new ArrayList<Card>();
-        // pop cards off the top of the draw pile till we've got a starting hand
+        // draw cards from the deck till we've got a starting hand
         for (int i=0;i<START_SIZE; i++) {
-            this.hand.add(drawpile.pop());
+            this.hand.add(d.drawCard());
         } // end for
     } // end constructor
 }
