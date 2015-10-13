@@ -19,9 +19,11 @@ public class CrazyEightsGame {
         Hand testHand = new Hand();
 */
         // testing player and adding cards to player's hand.
-        Player p1 = new Player("Riley");
+        Human p1 = new Human("Riley");
         System.out.println(p1);
         p1.drawCard(gameDeck);
         System.out.println(p1);
+
+        // TODO: decide where to evaluate whether a card is a legal play - whose job is that?
     }
 }

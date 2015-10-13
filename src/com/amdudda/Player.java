@@ -10,12 +10,12 @@ public class Player {
     protected String name;
     protected Hand playerHand;
 
-    // Constructor
+    /*// Constructor
     public Player(String pName) {
         // creates a player and deals them a hand
         this.name = pName;
         this.playerHand = new Hand();
-    }
+    }*/
 
     @Override
     public String toString() {

@@ -48,4 +48,13 @@ public class Card {
             default: return this.value + "";
         }
     }
+
+    protected boolean isLegalToPlayOn(Card c) {
+        // decides whether the card is a legal play
+        // longer name to make it clearer what it's actually evaluating
+        if (c.value == 8 || this.getFace().equals(c.getFace()) || this.getValue() == c.getValue()) {
+            return true;
+        }
+        return false;
+    }
 }
