@@ -14,9 +14,10 @@ public class CrazyEightsGame {
         /*System.out.println(gameDeck.drawCard());
         System.out.println(gameDeck.drawCard());
         System.out.println(gameDeck.drawCard());
-*/
-        Hand testHand = new Hand();
 
-        System.out.println(testHand);
+        Hand testHand = new Hand();
+*/
+        Player p1 = new Player("Riley");
+        System.out.println(p1);
     }
 }

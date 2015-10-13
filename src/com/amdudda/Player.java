@@ -16,4 +16,9 @@ public class Player {
         this.name = pName;
         this.playerHand = new Hand();
     }
+
+    @Override
+    public String toString() {
+        return this.name + "'s hand is: \n" + playerHand.toString();
+    }
 }

@@ -29,7 +29,7 @@ public class Hand {
         for (Card c:this.hand) {
             list_of_cards += c + "\n";
         }
-       return "The cards in your hand are:\n" + list_of_cards;
+       return list_of_cards;
     }
 
 }
