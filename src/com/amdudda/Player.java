@@ -35,6 +35,8 @@ public class Player {
     public void drawCard(){
         // draw a card from the deck and add it to the player's hand
         this.playerHand.drawCard();
+        
+        //playerHand.addCard(Crazy8Game.yourDeck.drawCard());  //?
     }
 
 }
