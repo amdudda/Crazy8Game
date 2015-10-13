@@ -32,9 +32,12 @@ public class Player {
     }
 
     // misc methods
-    public void drawCard(){
+    public void drawCard(Deck d){
         // draw a card from the deck and add it to the player's hand
-        this.playerHand.drawCard();
+        // I'm passing a Deck variable here so the program is extensible to games with multiple decks to draw from
+        Card card_to_add = d.drawCard();
+        // it's Player's job to draw a card, but it's Hand object's responsibility to keep track of it
+        this.playerHand.addCard(card_to_add);
         
         //playerHand.addCard(Crazy8Game.yourDeck.drawCard());  //?
     }

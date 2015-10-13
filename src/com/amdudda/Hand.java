@@ -31,9 +31,8 @@ public class Hand {
     }
 
     // misc methods
-    public void drawCard() {
+    public void addCard(Card c) {
         // adds card to the hand
-        Card card_to_add = CrazyEightsGame.gameDeck.drawCard();
-        this.hand.add(card_to_add);
+        this.hand.add(c);
     }
 }
