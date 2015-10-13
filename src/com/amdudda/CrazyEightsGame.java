@@ -11,10 +11,10 @@ public class CrazyEightsGame {
         // testing our three objects
         gameDeck = new Deck();
         // print out the first few cards off the deck
+        /*System.out.println(gameDeck.drawCard());
         System.out.println(gameDeck.drawCard());
         System.out.println(gameDeck.drawCard());
-        System.out.println(gameDeck.drawCard());
-
+*/
         Hand testHand = new Hand();
 
         System.out.println(testHand);
