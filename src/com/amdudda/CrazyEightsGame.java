@@ -17,7 +17,10 @@ public class CrazyEightsGame {
 
         Hand testHand = new Hand();
 */
+        // testing player and adding cards to player's hand.
         Player p1 = new Player("Riley");
+        System.out.println(p1);
+        p1.drawCard();
         System.out.println(p1);
     }
 }

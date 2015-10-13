@@ -21,4 +21,20 @@ public class Player {
     public String toString() {
         return this.name + "'s hand is: \n" + playerHand.toString();
     }
+
+    // setter & getter for name
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // misc methods
+    public void drawCard(){
+        // draw a card from the deck and add it to the player's hand
+        this.playerHand.drawCard();
+    }
+
 }

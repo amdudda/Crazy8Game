@@ -1,8 +1,6 @@
 package com.amdudda;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Stack;
 
 /**
  * Created by amdudda on 10/12/2015.
@@ -32,4 +30,10 @@ public class Hand {
        return list_of_cards;
     }
 
+    // misc methods
+    public void drawCard() {
+        // adds card to the hand
+        Card card_to_add = CrazyEightsGame.gameDeck.drawCard();
+        this.hand.add(card_to_add);
+    }
 }
