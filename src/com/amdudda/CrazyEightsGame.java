@@ -24,6 +24,7 @@ public class CrazyEightsGame {
         p1.drawCard(gameDeck);
         System.out.println(p1);
 
-        // TODO: decide where to evaluate whether a card is a legal play - whose job is that?
+        // DONE: decide where to evaluate whether a card is a legal play - whose job is that?
+        // TODO: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
     }
 }

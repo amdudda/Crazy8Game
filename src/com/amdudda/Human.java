@@ -14,6 +14,8 @@ public class Human extends Player {
         this.playerHand = new Hand();
     }
 
-//    TODO: pick a card to play
-//    TODO: play a card
+//    TODO: pick a card to play=
+    public Card pickCard() {
+        return null;
+    }
 }

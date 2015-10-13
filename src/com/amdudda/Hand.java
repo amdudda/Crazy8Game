@@ -30,6 +30,11 @@ public class Hand {
        return list_of_cards;
     }
 
+    // getter for hand
+    public ArrayList<Card> getHand() {
+        return this.hand;
+    }
+
     // misc methods
     public void addCard(Card c) {
         // adds card to the hand
