@@ -42,7 +42,7 @@ public class Deck {
     }
 
     // misc methods
-    public Card drawCard(){
+    public Card drawCard() {
         // draw a card from the Deck
         return this.drawPile.pop();
     }

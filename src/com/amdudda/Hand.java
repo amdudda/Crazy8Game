@@ -14,11 +14,11 @@ public class Hand {
 
     // Constructor
     // Done: this seeds a bunch of cards from the draw pile - need to code that first
-    public Hand(Deck d) {
+    public Hand() {
         this.hand = new ArrayList<Card>();
         // draw cards from the deck till we've got a starting hand
         for (int i=0;i<START_SIZE; i++) {
-            this.hand.add(d.drawCard());
+            this.hand.add(CrazyEightsGame.gameDeck.drawCard());
         } // end for
     } // end constructor
 
@@ -31,4 +31,5 @@ public class Hand {
         }
        return "The cards in your hand are:\n" + list_of_cards;
     }
+
 }
