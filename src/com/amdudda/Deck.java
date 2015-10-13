@@ -1,7 +1,6 @@
 package com.amdudda;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -10,12 +9,12 @@ import java.util.Stack;
  */
 public class Deck {
     // a Stack storing the draw pile
-    protected Stack<Card> draw_pile;
+    protected Stack<Card> drawPile;
 
     // Constructor
     public Deck() {
-        // creates a new draw pile -  note this hasn't been shuffled!
-        Stack<Card> draw_pile = new Stack<Card>();
+        // creates a new draw pile
+        this.drawPile = new Stack<Card>();
 
         // set up an interable list of our suits
         ArrayList<String> suits = new ArrayList<String>();
@@ -27,24 +26,24 @@ public class Deck {
         // and populate our Deck.
         for (String j : suits) {
             for (int i = 1; i < 14; i++) {
-                draw_pile.add(new Card(j,i));
+                this.drawPile.add(new Card(j, i));
             } // end run through suits
         }  // end run through card numbers
 
         // shuffle the deck
-        Collections.shuffle(draw_pile);
+        Collections.shuffle(this.drawPile);
 
     }  // end constructor
 
     // getter for deck
     protected Stack<Card> getDeck() {
         // returns the draw pile I've generated
-        return this.draw_pile;
+        return this.drawPile;
     }
 
     // misc methods
     public Card drawCard(){
         // draw a card from the Deck
-        return this.draw_pile.pop();
+        return this.drawPile.pop();
     }
 }

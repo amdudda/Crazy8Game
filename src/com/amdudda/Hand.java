@@ -21,4 +21,14 @@ public class Hand {
             this.hand.add(d.drawCard());
         } // end for
     } // end constructor
+
+    @Override
+    public String toString(){
+        // prints out the contents of the hand
+        String list_of_cards = "";
+        for (Card c:this.hand) {
+            list_of_cards += c + "\n";
+        }
+       return "The cards in your hand are:\n" + list_of_cards;
+    }
 }
