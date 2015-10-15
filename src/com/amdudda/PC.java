@@ -37,13 +37,18 @@ public class PC extends Player {
             if (c.value == 8) { return c; }
         }
 
-        // and if nothing was found, return null
-        return null;
+        // and if nothing was found, return fake values
+        return new Card("fakesuit",-1);
     }
 
-    // TODO: play a card
-    public void playCard(Card c) {
-        // how does the computer play a card?
+    // take a turn!
+    public void takeTurn() {
+        Card card = pickCard();
+        Card disc = CrazyEightsGame.discard;
+        // if the card is not a legal play, draw a new card, then check pick a card again
+        if (!(card.isLegalToPlayOn(disc))) {
+            drawCard(CrazyEightsGame.gameDeck);
+        }
 
     }
 

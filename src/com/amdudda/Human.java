@@ -28,8 +28,9 @@ public class Human extends Player {
         return this.playerHand.getHand().get(index);
     }
 
-    // TODO: play a card
-    public void playCard(Card c) {
-        return;
+    // take a turn!
+    public void takeTurn() {
+        Card card = pickCard();
+
     }
 }

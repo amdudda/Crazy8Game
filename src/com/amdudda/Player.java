@@ -18,7 +18,7 @@ public abstract class Player {
     }*/
 
     public abstract Card pickCard();
-    public abstract void playCard(Card c);
+    public abstract void takeTurn();
 
     @Override
     public String toString() {
@@ -44,5 +44,13 @@ public abstract class Player {
         
         //playerHand.addCard(Crazy8Game.yourDeck.drawCard());  //?
     }
+
+    public void playCard(Card c) {
+        // updates the value of the top of the discard, and deletes the card from its hand.
+        CrazyEightsGame.discard = c;
+        this.playerHand.getHand().remove(c);
+    }
+
+
 
 }
