@@ -41,5 +41,10 @@ public class PC extends Player {
         return null;
     }
 
+    // TODO: play a card
+    public void playCard(Card c) {
+        // how does the computer play a card?
+
+    }
 
 }

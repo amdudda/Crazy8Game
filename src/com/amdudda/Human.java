@@ -16,15 +16,20 @@ public class Human extends Player {
         this.playerHand = new Hand();
     }
 
-//    TODO: pick a card to play
+//    DONE: pick a card to play
     public Card pickCard() {
         Scanner s = CrazyEightsGame.scanner;
         // print out the player's info
         System.out.println(this);
         // and prompt for info:
-        System.out.println("Choose a card to play:\n");
+        System.out.println("Choose a card to play:");
         int index = s.nextInt() - 1;
         s.nextLine();
         return this.playerHand.getHand().get(index);
+    }
+
+    // TODO: play a card
+    public void playCard(Card c) {
+        return;
     }
 }
