@@ -19,6 +19,7 @@ public abstract class Player {
 
     public abstract Card pickCard();
     public abstract void takeTurn();
+    public abstract String pickSuit();
 
     @Override
     public String toString() {

@@ -46,4 +46,8 @@ public class Deck {
         // draw a card from the Deck
         return this.drawPile.pop();
     }
+
+    public int getSize() {
+        return this.drawPile.size();
+    }
 }

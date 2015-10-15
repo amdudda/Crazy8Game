@@ -1,5 +1,8 @@
 package com.amdudda;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * Created by amdudda on 10/13/15.
  */
@@ -43,13 +46,35 @@ public class PC extends Player {
 
     // take a turn!
     public void takeTurn() {
-        Card card = pickCard();
+        Card card = this.pickCard();
         Card disc = CrazyEightsGame.discard;
-        // if the card is not a legal play, draw a new card, then check pick a card again
-        if (!(card.isLegalToPlayOn(disc))) {
-            drawCard(CrazyEightsGame.gameDeck);
+        int decksize = CrazyEightsGame.gameDeck.getSize();
+        // so long the card picked is not a legal play, draw a new card, then try to pick a card again
+        while (!(card.isLegalToPlayOn(disc)) && decksize > 0) {
+            this.drawCard(CrazyEightsGame.gameDeck);
+            card = this.pickCard();
+        }
+        // need logic to deal with if the draw pile has gone down to zero
+        if (!(card.isLegalToPlayOn(disc)) && decksize == 0) {
+            // no way to play, and the computer passes
+            System.out.println(this.name + " passes.");
+            return;
+        } else {
+            // once we have a legal play, play the card.
+            this.playCard(card);
         }
 
+        if (disc.getValue() == 8) { disc.setSuit(pickSuit()); }
+    }
+
+    public String pickSuit() {
+        // picks a suit if an 8 is played
+        String[] suits = {"Hearts","Diamonds","Clubs","Spades"};
+        // pick a random number and pick that suit from the array and return it
+        Random index = new Random();
+        int i = index.nextInt(4);
+        System.out.println(this.name + " picks " + suits[i] + ".");
+        return suits[i];
     }
 
 }

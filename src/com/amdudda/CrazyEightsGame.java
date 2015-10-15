@@ -24,17 +24,15 @@ public class CrazyEightsGame {
 */
         // testing player and adding cards to player's hand.
         Human p1 = new Human("Riley");
-        //System.out.println(p1);
-        p1.drawCard(gameDeck);
-        System.out.println(p1);
-/*
-        System.out.println("Pick a a card...");
-        System.out.println("You have picked a " + p1.pickCard());
-*/
 
-        // DONE: decide where to evaluate whether a card is a legal play - whose job is that?
         // TODO: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
 
+        /*
+        outline of game play:
+        1.  set up players - for now 1 PC and 1 Human
+        2.  a player takes a turn
+        3.  #2 repeats so long as two conditions are met: nobody's hand is empty and the deck is not empty.
+         */
         // close the scanner when you're done
         scanner.close();
     }
