@@ -3,7 +3,7 @@ package com.amdudda;
 /**
  * Created by amdudda on 10/12/15.
  */
-public class Player {
+public abstract class Player {
     // Player class, will split into polymorphic Human and Computer classes
 
     // attributes of all players - protected instead of private so sublcasses can access & inherit
@@ -16,6 +16,8 @@ public class Player {
         this.name = pName;
         this.playerHand = new Hand();
     }*/
+
+    public abstract Card pickCard();
 
     @Override
     public String toString() {

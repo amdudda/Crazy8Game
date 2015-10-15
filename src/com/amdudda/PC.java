@@ -14,19 +14,20 @@ public class PC extends Player {
     }
 
 //    DONE: pick a card to play
-    protected Card pickCard(Card discard){
+    public Card pickCard(){
         // tells the computer what card to pick
+        Card disc = CrazyEightsGame.discard;
 
         // first try to find a numeric match
         for (Card c:this.playerHand.getHand()) {
-            if (c.value !=8 && c.value == discard.value) {
+            if (c.value !=8 && c.value == disc.getValue()) {
                 return c;
             }
         }
 
         // then try to match the suit
         for (Card c:this.playerHand.getHand()) {
-            if (c.value !=8 && c.suit.equals(discard.getSuit())) {
+            if (c.value !=8 && c.suit.equals(disc.getSuit())) {
                 return c;
             }
         }

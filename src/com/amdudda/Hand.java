@@ -24,8 +24,8 @@ public class Hand {
     public String toString(){
         // prints out the contents of the hand
         String list_of_cards = "";
-        for (Card c:this.hand) {
-            list_of_cards += c + "\n";
+        for (int i=0; i<this.hand.size(); i++) {
+            list_of_cards += (i+1) + ".) " + this.getHand().get(i) + "\n";
         }
        return list_of_cards;
     }
