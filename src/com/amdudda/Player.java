@@ -9,6 +9,7 @@ public abstract class Player {
     // attributes of all players - protected instead of private so sublcasses can access & inherit
     protected String name;
     protected Hand playerHand;
+    protected int score;
 
     /*// Constructor
     public Player(String pName) {
@@ -26,13 +27,19 @@ public abstract class Player {
         return this.name + "'s hand is: \n" + playerHand.toString();
     }
 
-    // setter & getter for name
+    // setter & getter for name & score
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getScore() { return this.score; }
+
+    public void setScore(int gameScore) {
+        this.score = gameScore;
     }
 
     // misc methods

@@ -14,6 +14,7 @@ public class PC extends Player {
         // creates a computer player and deals them a hand
         this.name = "The computer";
         this.playerHand = new Hand();
+        this.score = 0;
     }
 
 //    DONE: pick a card to play

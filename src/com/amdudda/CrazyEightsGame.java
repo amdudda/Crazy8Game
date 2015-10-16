@@ -53,4 +53,9 @@ public class CrazyEightsGame {
         }
         return false;
     }
+
+    private static void setScores(ArrayList<Player> gp) {
+        // calculates the score
+
+    }
 }

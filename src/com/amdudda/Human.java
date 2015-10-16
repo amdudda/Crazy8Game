@@ -14,25 +14,8 @@ public class Human extends Player {
         // creates a human player and deals them a hand
         this.name = pName;
         this.playerHand = new Hand();
+        this.score = 0;
     }
-
-/*//    DONE: pick a card to play
-    public Card pickCard() {
-       *//* Scanner s = CrazyEightsGame.scanner;
-        Card card = chooseCard();
-        Card disc = CrazyEightsGame.discard;
-        String yn;
-        while (!(card.isLegalToPlayOn(disc))) {
-            // if the Human picks an invalid card, make them pick another one.
-            System.out.println("The " + card + " cannot be played on the " + disc + ".");
-            System.out.println("Would you like to pick a different card (y/n)?");
-            yn = s.nextLine().toLowerCase();
-            if ( yn.equals("n")) { card = chooseCard(); }
-            else { break; }
-        }*//*
-        return null;
-    }*/
-
 
     // take a turn!
     public void takeTurn() {
