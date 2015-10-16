@@ -84,6 +84,23 @@ public class Human extends Player {
 
     public String pickSuit() {
         // lets user pick a suit when they play an 8.
-        return "Hearts"; // fake data for now, we''l code this later once i've thought through logic a bit
+        // return "Hearts"; // fake data for now, we''l code this later once i've thought through logic a bit
+        Scanner s = CrazyEightsGame.scanner;
+        String suit_picked;
+        String[] suits = {"Hearts","Diamonds","Clubs","Spades"};
+        int choice;
+        while (true) {
+            System.out.println("Pick a suit:");
+            int i = 1;
+            for (String suit : suits) {
+                System.out.println(i + ".) " + suit);
+                i++;
+            }
+            choice = s.nextInt() - 1;
+            if (choice >=0 && choice < suits.length) { break; }  // can break out of loop if user makes valid selection
+            System.out.println("Please make a valid selection.");
+        }
+        suit_picked = suits[choice];
+        return suit_picked;
     }
 }

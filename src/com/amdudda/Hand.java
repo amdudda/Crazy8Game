@@ -47,4 +47,8 @@ public class Hand {
     public Card getCardFromHand(int i) {
         return this.hand.get(i);
     }
+
+    public void dropCard(Card c) {
+        this.hand.remove(c);
+    }
 }

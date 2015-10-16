@@ -64,7 +64,6 @@ public class PC extends Player {
             this.playCard(card);
         }
 
-        if (disc.getValue() == 8) { disc.setSuit(pickSuit()); }
     }
 
     public String pickSuit() {

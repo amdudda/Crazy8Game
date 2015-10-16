@@ -50,7 +50,9 @@ public abstract class Player {
     public void playCard(Card c) {
         // updates the value of the top of the discard, and deletes the card from its hand.
         CrazyEightsGame.discard = c;
-        this.playerHand.getHand().remove(c);
+        this.playerHand.dropCard(c);
+        System.out.println(this.name + " plays a " + c);
+        if (CrazyEightsGame.discard.getValue() == 8) { CrazyEightsGame.discard.setSuit(pickSuit()); }
     }
 
 
