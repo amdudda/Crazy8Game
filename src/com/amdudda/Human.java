@@ -82,6 +82,7 @@ public class Human extends Player {
             System.out.println("Please make a valid selection.");
         }
         suit_picked = suits[choice];
+        System.out.println(this.name + " declares " + suit_picked);
         return suit_picked;
     }
 }

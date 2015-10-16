@@ -30,6 +30,8 @@ public class CrazyEightsGame {
         2.  a player takes a turn
         3.  #2 repeats so long as two conditions are met: nobody's hand is empty and the deck is not empty.
          */
+
+
         // DONE: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
         while (true) {
             gameDeck = new Deck();
@@ -37,7 +39,6 @@ public class CrazyEightsGame {
 
             System.out.println("Shuffling deck...");
             System.out.println("Dealing cards...");
-            System.out.println(gamePlayers.get(1).playerHand);
 
             System.out.println("The top card of the deck is flipped over and play begins!");
             System.out.println("The current top of the discard pile is a " + discard + ".");
@@ -110,13 +111,15 @@ public class CrazyEightsGame {
     private static void reportRoundScores(ArrayList<Player> gp){
         ArrayList<Integer> roundScores = new ArrayList<Integer>();
         Player p;
-        int pScore;
+        int pScore, oldscore;
         System.out.println("Scoring for this round:");
         for (int i=0; i<gp.size(); i++) {
             p = gp.get(i);
             pScore = getScore(p);
             roundScores.add(pScore);
             System.out.println(p.getName() + "'s score is: " + pScore + " points.");
+            oldscore = gp.get(i).getScore();
+            gp.get(i).setScore(oldscore + pScore);
         }
         // for now it's a 2-player game, so just do a simple comparison of scores
         if (roundScores.get(0) < roundScores.get(1)) {
@@ -132,8 +135,7 @@ public class CrazyEightsGame {
         //setScores(gp);
         int pScore;
         for (Player p : gp) {
-            pScore = getScore(p);
-            System.out.println(p.getName() + "'s score is: " + pScore + " points.");
+            System.out.println(p.getName() + "'s score is: " + p.getScore() + " points.");
         }
         if (gp.get(0).getScore() < gp.get(1).getScore()) {
             System.out.printf("%s %s the game!\n", gp.get(0).getName(), scoretype);
