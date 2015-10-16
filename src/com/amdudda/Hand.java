@@ -36,8 +36,15 @@ public class Hand {
     }
 
     // misc methods
+
+    public int getSize() { return this.hand.size(); }
+
     public void addCard(Card c) {
         // adds card to the hand
         this.hand.add(c);
+    }
+
+    public Card getCardFromHand(int i) {
+        return this.hand.get(i);
     }
 }

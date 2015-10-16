@@ -17,7 +17,7 @@ public abstract class Player {
         this.playerHand = new Hand();
     }*/
 
-    public abstract Card pickCard();
+    //public abstract Card pickCard();
     public abstract void takeTurn();
     public abstract String pickSuit();
 
@@ -40,6 +40,7 @@ public abstract class Player {
         // draw a card from the deck and add it to the player's hand
         // I'm passing a Deck variable here so the program is extensible to games with multiple decks to draw from
         Card card_to_add = d.drawCard();
+        System.out.println(this.name + "has drawn a " + card_to_add + ".");
         // it's Player's job to draw a card, but it's Hand object's responsibility to keep track of it
         this.playerHand.addCard(card_to_add);
         

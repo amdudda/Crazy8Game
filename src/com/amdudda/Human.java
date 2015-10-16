@@ -19,9 +19,9 @@ public class Human extends Player {
         this.playerHand = new Hand();
     }
 
-//    DONE: pick a card to play
+/*//    DONE: pick a card to play
     public Card pickCard() {
-        Scanner s = CrazyEightsGame.scanner;
+       *//* Scanner s = CrazyEightsGame.scanner;
         Card card = chooseCard();
         Card disc = CrazyEightsGame.discard;
         String yn;
@@ -32,46 +32,55 @@ public class Human extends Player {
             yn = s.nextLine().toLowerCase();
             if ( yn.equals("n")) { card = chooseCard(); }
             else { break; }
-        }
-        return card;
-    }
+        }*//*
+        return null;
+    }*/
 
-    private Card chooseCard() {
-        // allows player to choose a card from their hand
-
-        Scanner s = CrazyEightsGame.scanner;
-        // print out the player's info
-        System.out.println(this);
-        // and prompt for info:
-        System.out.println("Choose a card to play:");
-        int index = s.nextInt() - 1;
-        s.nextLine(); // move the scanner to the next line
-        return this.playerHand.getHand().get(index);
-    }
 
     // take a turn!
     public void takeTurn() {
         System.out.println(menuoptions);
         Scanner s = CrazyEightsGame.scanner;
         int selection = 0;
+        Card picked = new Card("fakesuit",-1);
+        boolean valid_handindex;
         /*
         Human turn's logic:
-        1.  present turn options
-        2.  if necessary, draw a card
-        3.  pick a card to play
+        1.  list out hand and add option 0 = draw a card
+        2.  if player chooses a legal play, play the card
+        3.  else if == 0, draw a card and loop
+        4.  else loop and pick again
         4.  once card successfully played, end of turn
         */
-        System.out.println(menuoptions);
-        selection = s.nextInt();
-        while (selection < 1 && selection > 2) {
-            System.out.println("You have not made a valid choice.");
-            System.out.println(menuoptions);
-            selection = s.nextInt();
-        }
-        if (selection == 1) { this.pickCard(); }
-        else if (selection == 2) { drawCard(CrazyEightsGame.gameDeck); }
 
-    }
+        // print out the player's info
+        System.out.println(this);
+        // add option zero to draw a card
+        System.out.println("0.) draw a card");
+
+        while (true) {
+            // and prompt for a choice:
+            System.out.println("Choose a card to play or enter 0 to draw a card:");
+            int index = s.nextInt() - 1;
+            s.nextLine(); // move the scanner to the next line
+            valid_handindex = index >= 0 && index < this.playerHand.getSize();
+            if (valid_handindex) picked = this.playerHand.getCardFromHand(index);
+
+            // act on the user's choice
+            if (index >= this.playerHand.getSize()) {
+                System.out.println("You have chosen an invalid option.  Please try again.");
+            } else if (valid_handindex && picked.isLegalToPlayOn(CrazyEightsGame.discard)) {
+                playCard(picked);
+                break;
+            } else if (index == -1) {
+                // draw a card
+                this.drawCard(CrazyEightsGame.gameDeck);
+            } else {
+                // illegal play chosen, pick again
+                System.out.println("The " + picked + " cannot be played on the " + CrazyEightsGame.discard + ".");
+            }  // end if-else
+        } // end while
+    } // end takeTurn
 
     public String pickSuit() {
         // lets user pick a suit when they play an 8.

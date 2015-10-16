@@ -17,7 +17,7 @@ public class PC extends Player {
     }
 
 //    DONE: pick a card to play
-    public Card pickCard(){
+    private Card pickCard(){
         // tells the computer what card to pick
         Card disc = CrazyEightsGame.discard;
 
