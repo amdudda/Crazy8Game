@@ -64,6 +64,7 @@ public abstract class Player {
         CrazyEightsGame.discard = c;
         this.playerHand.dropCard(c);
         System.out.println(this.name + " plays a " + c);
+        System.out.println(this.name + " has " + this.playerHand.getSize() + " card(s) in hand.");
         if (CrazyEightsGame.discard.getValue() == 8) { CrazyEightsGame.discard.setSuit(pickSuit()); }
     }
 

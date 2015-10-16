@@ -34,9 +34,6 @@ public class CrazyEightsGame {
 
         // DONE: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
         while (true) {
-            gameDeck = new Deck();
-            discard = gameDeck.drawCard();
-
             System.out.println("Shuffling deck...");
             System.out.println("Dealing cards...");
 
@@ -55,10 +52,10 @@ public class CrazyEightsGame {
 
             // DONE: implement scoring
             reportRoundScores(gamePlayers);
-            System.out.println("Current score for the game:");
+            System.out.println("\nCurrent score for the game:");
             reportGameScores(gamePlayers, "is winning");
 
-            System.out.println("Would you like to play another round (y/n)?");
+            System.out.println("\nWould you like to play another round (y/n)?");
             keep_playing = scanner.nextLine();
             // if they say no, stop the game.
             if (keep_playing.equals("n")) {
@@ -112,7 +109,7 @@ public class CrazyEightsGame {
         ArrayList<Integer> roundScores = new ArrayList<Integer>();
         Player p;
         int pScore, oldscore;
-        System.out.println("Scoring for this round:");
+        System.out.println("\nScoring for this round:");
         for (int i=0; i<gp.size(); i++) {
             p = gp.get(i);
             pScore = getScore(p);
@@ -125,7 +122,7 @@ public class CrazyEightsGame {
         if (roundScores.get(0) < roundScores.get(1)) {
             System.out.printf("%s wins the round!\n", gp.get(0).getName());
         } else if (roundScores.get(0) > roundScores.get(1)) {
-            System.out.printf("%s wins the round!\n", gp.get(0).getName());
+            System.out.printf("%s wins the round!\n", gp.get(1).getName());
         } else {
             System.out.printf("The round is tied!\n");
         }
@@ -140,7 +137,7 @@ public class CrazyEightsGame {
         if (gp.get(0).getScore() < gp.get(1).getScore()) {
             System.out.printf("%s %s the game!\n", gp.get(0).getName(), scoretype);
         } else if (gp.get(0).getScore() > gp.get(1).getScore()) {
-            System.out.printf("%s %s the game!\n", gp.get(0).getName(), scoretype);
+            System.out.printf("%s %s the game!\n", gp.get(1).getName(), scoretype);
         } else {
             System.out.printf("The game is tied!\n", scoretype);
         }
