@@ -10,17 +10,19 @@ public class CrazyEightsGame {
     public static Scanner scanner;  // scanner for player input
 
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
         // Crazy Eights game
 
         // create our deck, scanner, and pop the card off gameDeck to create our current discarded card
         gameDeck = new Deck();
-        scanner = new Scanner(System.in);
         discard = gameDeck.drawCard();
+        scanner = new Scanner(System.in);
+
         // set up our players
         ArrayList<Player> gamePlayers = new ArrayList<Player>();
         gamePlayers.add(new PC());
         gamePlayers.add(new Human("Riley"));
+        String keep_playing;
 
         /*
         outline of game play:
@@ -29,56 +31,116 @@ public class CrazyEightsGame {
         3.  #2 repeats so long as two conditions are met: nobody's hand is empty and the deck is not empty.
          */
         // DONE: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
-        System.out.println("The top card of the deck is flipped over and play begins!");
-        System.out.println("The current top of the discard pile is a " + discard + ".");
-        while (!isGameOver(gamePlayers)) {
-            for (Player p:gamePlayers) {
-                p.takeTurn();
-                if (isGameOver(gamePlayers)) { break; }
+        while (true) {
+            gameDeck = new Deck();
+            discard = gameDeck.drawCard();
+
+            System.out.println("Shuffling deck...");
+            System.out.println("Dealing cards...");
+            System.out.println(gamePlayers.get(1).playerHand);
+
+            System.out.println("The top card of the deck is flipped over and play begins!");
+            System.out.println("The current top of the discard pile is a " + discard + ".");
+            while (!isGameOver(gamePlayers)) {
+                for (Player p : gamePlayers) {
+                    p.takeTurn();
+                    if (isGameOver(gamePlayers)) {
+                        break;
+                    }
                 } // end for each
             } // end while loop
 
-        System.out.println("Game over!");
+            System.out.println("Game over!");
 
-        // TODO: implement scoring
-        reportScores(gamePlayers);
+            // DONE: implement scoring
+            reportRoundScores(gamePlayers);
+            System.out.println("Current score for the game:");
+            reportGameScores(gamePlayers, "is winning");
+
+            System.out.println("Would you like to play another round (y/n)?");
+            keep_playing = scanner.nextLine();
+            // if they say no, stop the game.
+            if (keep_playing.equals("n")) {
+                break;
+            } else {
+                // if the game continues, we need to create a new deck and restart play.
+                gameDeck = new Deck();
+                discard = gameDeck.drawCard();
+                for (Player p:gamePlayers) {
+                    p.playerHand = new Hand();
+                }
+            }
+        }
+
+        //Report the final results of the game
+        System.out.println("\nYou have chosen to end the game.");
+        reportGameScores(gamePlayers, "won");
+        System.out.println("\nThank you for playing!");
 
         // close the scanner when the game is over
         scanner.close();
     }
 
-    private static boolean isGameOver(ArrayList<Player> gp){
-        if (gameDeck.getSize() == 0) { return true; }
-        for (Player p:gp) {
-            if (p.playerHand.getSize() == 0) { return true; }
+    private static boolean isGameOver(ArrayList<Player> gp) {
+        if (gameDeck.getSize() == 0) {
+            return true;
+        }
+        for (Player p : gp) {
+            if (p.playerHand.getSize() == 0) {
+                return true;
+            }
         }
         return false;
     }
 
-    private static void setScores(ArrayList<Player> gp) {
-        // calculates the score
-        for (Player p:gp){
+    private static int getScore(Player p) {
+        // calculates the player's score for the round
             Hand pH = p.getPlayerHand();
-            if (pH.getSize() == 0 ) { p.score += 0; }
-            else {
-                for (int i=0; i<pH.getSize(); i++) {
-                    p.score += pH.getCardFromHand(i).getValue();
+            int roundScore = 0;
+            if (pH.getSize() == 0) {
+                return 0;
+            } else {
+                for (int i = 0; i < pH.getSize(); i++) {
+                    roundScore += pH.getCardFromHand(i).getValue();
                 }
+                return roundScore;
             }
+    }
+
+    private static void reportRoundScores(ArrayList<Player> gp){
+        ArrayList<Integer> roundScores = new ArrayList<Integer>();
+        Player p;
+        int pScore;
+        System.out.println("Scoring for this round:");
+        for (int i=0; i<gp.size(); i++) {
+            p = gp.get(i);
+            pScore = getScore(p);
+            roundScores.add(pScore);
+            System.out.println(p.getName() + "'s score is: " + pScore + " points.");
+        }
+        // for now it's a 2-player game, so just do a simple comparison of scores
+        if (roundScores.get(0) < roundScores.get(1)) {
+            System.out.printf("%s wins the round!\n", gp.get(0).getName());
+        } else if (roundScores.get(0) > roundScores.get(1)) {
+            System.out.printf("%s wins the round!\n", gp.get(0).getName());
+        } else {
+            System.out.printf("The round is tied!\n");
         }
     }
 
-    private static void reportScores(ArrayList<Player> gp) {
-        setScores(gp);
-        for (Player p:gp){
-            System.out.println(p.getName() + "'s score is: " + p.getScore() + " points.");
+    private static void reportGameScores(ArrayList<Player> gp, String scoretype) {
+        //setScores(gp);
+        int pScore;
+        for (Player p : gp) {
+            pScore = getScore(p);
+            System.out.println(p.getName() + "'s score is: " + pScore + " points.");
         }
         if (gp.get(0).getScore() < gp.get(1).getScore()) {
-            System.out.println(gp.get(0).getName() + " wins!");
+            System.out.printf("%s %s the game!\n", gp.get(0).getName(), scoretype);
         } else if (gp.get(0).getScore() > gp.get(1).getScore()) {
-            System.out.println(gp.get(1).getName() + " wins!");
+            System.out.printf("%s %s the game!\n", gp.get(0).getName(), scoretype);
         } else {
-            System.out.println("The game is tied!");
+            System.out.printf("The game is tied!\n", scoretype);
         }
 
     }
