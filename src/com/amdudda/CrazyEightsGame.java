@@ -69,8 +69,9 @@ public class CrazyEightsGame {
     }
 
     private static void reportScores(ArrayList<Player> gp) {
+        setScores(gp);
         for (Player p:gp){
-            System.out.println(p.getName() + "'s score is: " + p.getScore() + " + points.");
+            System.out.println(p.getName() + "'s score is: " + p.getScore() + " points.");
         }
         if (gp.get(0).getScore() < gp.get(1).getScore()) {
             System.out.println(gp.get(0).getName() + " wins!");

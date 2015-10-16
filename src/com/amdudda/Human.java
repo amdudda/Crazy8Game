@@ -32,12 +32,13 @@ public class Human extends Player {
         4.  once card successfully played, end of turn
         */
 
-        // print out the player's info
-        System.out.println(this);
-        // add option zero to draw a card
-        System.out.println("0.) draw a card");
+
 
         while (true) {
+            // print out the player's info
+            System.out.print(this);
+            // add option zero to draw a card
+            System.out.println("0.) draw a card");
             // and prompt for a choice:
             System.out.println("Choose a card to play or enter 0 to draw a card:");
             int index = s.nextInt() - 1;
@@ -54,6 +55,7 @@ public class Human extends Player {
             } else if (index == -1) {
                 // draw a card
                 this.drawCard(CrazyEightsGame.gameDeck);
+                System.out.println("The top of the discard is still a " + CrazyEightsGame.discard + ".");
             } else {
                 // illegal play chosen, pick again
                 System.out.println("The " + picked + " cannot be played on the " + CrazyEightsGame.discard + ".");
