@@ -21,10 +21,6 @@ public class CrazyEightsGame {
         ArrayList<Player> gamePlayers = new ArrayList<Player>();
         gamePlayers.add(new PC());
         gamePlayers.add(new Human("Riley"));
-        // and initialize our turn counter
-        int turns = 0;
-
-        // TODO: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
 
         /*
         outline of game play:
@@ -32,6 +28,9 @@ public class CrazyEightsGame {
         2.  a player takes a turn
         3.  #2 repeats so long as two conditions are met: nobody's hand is empty and the deck is not empty.
          */
+        // DONE: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
+        System.out.println("The top card of the deck is flipped over and play begins!");
+        System.out.println("The current top of the discard pile is a " + discard + ".");
         while (!isGameOver(gamePlayers)) {
             for (Player p:gamePlayers) {
                 p.takeTurn();
@@ -40,6 +39,8 @@ public class CrazyEightsGame {
             } // end while loop
 
         System.out.println("Game over!");
+
+        // TODO: implement scoring
 
         // close the scanner when the game is over
         scanner.close();

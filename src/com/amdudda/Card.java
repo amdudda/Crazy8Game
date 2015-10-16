@@ -52,7 +52,7 @@ public class Card {
     protected boolean isLegalToPlayOn(Card c) {
         // decides whether the card is a legal play
         // longer name to make it clearer what it's actually evaluating
-        if (c.value == 8 || this.getFace().equals(c.getFace()) || this.getValue() == c.getValue()) {
+        if (c.value == 8 || this.suit.equals(c.getSuit()) || this.getValue() == c.getValue()) {
             return true;
         }
         return false;

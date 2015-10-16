@@ -9,9 +9,6 @@ public class Human extends Player {
     // this is an extension of player to facilitate a human player
     // no new attributes yet
 
-    public static String menuoptions = "What would you like to do?\n1. Pick a card\n2. Draw a card";
-        //\n3. Pass";  TODO: needs implemented
-
     // constructor
     public Human(String pName) {
         // creates a human player and deals them a hand
@@ -39,7 +36,6 @@ public class Human extends Player {
 
     // take a turn!
     public void takeTurn() {
-        System.out.println(menuoptions);
         Scanner s = CrazyEightsGame.scanner;
         int selection = 0;
         Card picked = new Card("fakesuit",-1);
