@@ -41,6 +41,7 @@ public class CrazyEightsGame {
         System.out.println("Game over!");
 
         // TODO: implement scoring
+        reportScores(gamePlayers);
 
         // close the scanner when the game is over
         scanner.close();
@@ -56,6 +57,28 @@ public class CrazyEightsGame {
 
     private static void setScores(ArrayList<Player> gp) {
         // calculates the score
+        for (Player p:gp){
+            Hand pH = p.getPlayerHand();
+            if (pH.getSize() == 0 ) { p.score += 0; }
+            else {
+                for (int i=0; i<pH.getSize(); i++) {
+                    p.score += pH.getCardFromHand(i).getValue();
+                }
+            }
+        }
+    }
+
+    private static void reportScores(ArrayList<Player> gp) {
+        for (Player p:gp){
+            System.out.println(p.getName() + "'s score is: " + p.getScore() + " + points.");
+        }
+        if (gp.get(0).getScore() < gp.get(1).getScore()) {
+            System.out.println(gp.get(0).getName() + " wins!");
+        } else if (gp.get(0).getScore() > gp.get(1).getScore()) {
+            System.out.println(gp.get(1).getName() + " wins!");
+        } else {
+            System.out.println("The game is tied!");
+        }
 
     }
 }

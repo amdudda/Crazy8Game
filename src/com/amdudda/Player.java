@@ -42,6 +42,8 @@ public abstract class Player {
         this.score = gameScore;
     }
 
+    protected Hand getPlayerHand() { return this.playerHand; }
+
     // misc methods
     public void drawCard(Deck d){
         // draw a card from the deck and add it to the player's hand
