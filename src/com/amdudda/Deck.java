@@ -30,12 +30,15 @@ public class Deck extends Pile {
             } // end run through suits
         }  // end run through card numbers
 
+//        TODO: why does this not inherit?
+//        this.drawPile.shuffle();
+
         // shuffle the deck
         Collections.shuffle(this.drawPile);
 
     }  // end constructor
 
-    // getter for deck
+    // getter for deck - duplicates getPile(), but useful for nomenclature match
     protected Stack<Card> getDeck() {
         // returns the draw pile I've generated
         return this.drawPile;

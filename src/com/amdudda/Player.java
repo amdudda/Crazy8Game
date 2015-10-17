@@ -60,8 +60,10 @@ public abstract class Player {
     }
 
     public void playCard(Card c) {
-        // updates the value of the top of the discard, and deletes the card from its hand.
+        // updates the value of the top of the discardPile, updates the value of discard,
+        // and removes the card from player's hand.
         CrazyEightsGame.discard = c;
+        CrazyEightsGame.discardPile.addCard(c);
         this.playerHand.dropCard(c);
         System.out.println(this.name + " plays a " + c);
         System.out.println(this.name + " has " + this.playerHand.getSize() + " card(s) in hand.");

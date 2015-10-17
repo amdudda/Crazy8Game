@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class CrazyEightsGame {
 
     public static Deck gameDeck;  // the game only has a single deck to draw from
-    public static Card discard; // and only one card to worry about in the discard pile
+    public static Pile discardPile; // the discard pile, in case we want to implement reshuffling.
+    public static Card discard; // and only one card to worry about in actual gameplay - if an 8, may be different from top of discardPile.
     public static Scanner scanner;  // scanner for player input
 
     public static void main(String[] args) {
@@ -15,6 +16,7 @@ public class CrazyEightsGame {
 
         // create our deck, scanner, and pop the card off gameDeck to create our current discarded card
         gameDeck = new Deck();
+        discardPile = new Pile();
         discard = gameDeck.drawCard();
         // TODO: Implement superclass Pile so discard pile can be recycled in "reshuffling" versions of game.
         scanner = new Scanner(System.in);
