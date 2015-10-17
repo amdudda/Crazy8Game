@@ -18,7 +18,7 @@ public class CrazyEightsGame {
         gameDeck = new Deck();
         discardPile = new Pile();
         discard = gameDeck.drawCard();
-        // TODO: Implement superclass Pile so discard pile can be recycled in "reshuffling" versions of game.
+        // DONE: Implement superclass Pile so discard pile can be recycled in "reshuffling" versions of game.
         scanner = new Scanner(System.in);
 
         // set up our players - using an ArrayList simplifies adding multiple players
