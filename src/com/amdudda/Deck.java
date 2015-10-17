@@ -7,7 +7,7 @@ import java.util.Stack;
 /**
  * Created by amdudda on 10/12/2015.
  */
-public class Deck {
+public class Deck extends Pile {
     // a Stack storing the draw pile
     protected Stack<Card> drawPile;
 

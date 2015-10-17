@@ -16,12 +16,13 @@ public class CrazyEightsGame {
         // create our deck, scanner, and pop the card off gameDeck to create our current discarded card
         gameDeck = new Deck();
         discard = gameDeck.drawCard();
+        // TODO: Implement superclass Pile so discard pile can be recycled in "reshuffling" versions of game.
         scanner = new Scanner(System.in);
 
-        // set up our players
+        // set up our players - using an ArrayList simplifies adding multiple players
         ArrayList<Player> gamePlayers = new ArrayList<Player>();
+        gamePlayers.add(new Human(getPlayerName()));
         gamePlayers.add(new PC());
-        gamePlayers.add(new Human("Riley"));
         String keep_playing;
 
         /*
@@ -105,6 +106,7 @@ public class CrazyEightsGame {
             }
     }
 
+    //TODO: Rework scoring so it can deal with multiple human players.
     private static void reportRoundScores(ArrayList<Player> gp){
         ArrayList<Integer> roundScores = new ArrayList<Integer>();
         Player p;
@@ -142,5 +144,10 @@ public class CrazyEightsGame {
             System.out.printf("The game is tied!\n", scoretype);
         }
 
+    }
+
+    private static String getPlayerName() {
+        System.out.println("Please enter your name:");
+        return scanner.nextLine();
     }
 }

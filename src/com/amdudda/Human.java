@@ -38,7 +38,7 @@ public class Human extends Player {
             // print out the player's info
             System.out.print(this);
             // add option zero to draw a card
-            System.out.println("0.) draw a card");
+            // System.out.println("0.) draw a card");
             // and prompt for a choice:
             System.out.println("Choose a card to play or enter 0 to draw a card:");
             int index = s.nextInt() - 1;
