@@ -23,7 +23,8 @@ public class CrazyEightsGame {
 
         // set up our players - using an ArrayList simplifies adding multiple players
         ArrayList<Player> gamePlayers = new ArrayList<Player>();
-        gamePlayers.add(new Human(getPlayerName()));
+        //gamePlayers.add(new Human(getPlayerName()));
+        gamePlayers.add(new PC());
         gamePlayers.add(new PC());
         String keep_playing;
 

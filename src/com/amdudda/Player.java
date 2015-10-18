@@ -55,6 +55,14 @@ public abstract class Player {
     public void drawCard(Deck d){
         // draw a card from the deck and add it to the player's hand
         // I'm passing a Deck variable here so the program is extensible to games with multiple decks to draw from
+        // make sure the deck isn't empty before trying to draw from it...
+        if (d.getSize() == 0) {
+            System.out.println("No cards left in deck!  You must play a card.");
+            return;
+        }
+
+        // TODO: pass as a valid play.
+
         Card card_to_add = d.drawCard();
         if (!this.name.equals("The computer")) {
             // hide what the computer draws from the other player(s)
