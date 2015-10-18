@@ -23,7 +23,7 @@ public class Human extends Player {
         Scanner s = CrazyEightsGame.scanner;
         int selection = 0;
         Card picked = new Card("fakesuit",-1);
-        boolean valid_handindex;
+        boolean valid_handindex, candraw;
         /*
         Human turn's logic:
         1.  list out hand and add option 0 = draw a card
@@ -34,32 +34,41 @@ public class Human extends Player {
         */
 
         while (true) {
-            // TODO: pass as a valid play.
+            // DONE: pass as a valid play.
             // print out the player's info
             System.out.print(Colorize(this.toString()));
+            candraw = (CrazyEightsGame.gameDeck.getSize() != 0);
             // add option zero to draw a card
             // System.out.println("0.) draw a card");
             // and prompt for a choice:
-            System.out.println("Choose a card to play or enter 0 to draw a card:");
+            if (candraw) {
+                System.out.println("Choose a card to play or enter 0 to draw a card:");
+            } else {
+                System.out.println("Choose a card to play or enter 0 to pass (no cards left to draw).");
+            }
             int index = s.nextInt() - 1;
             s.nextLine(); // move the scanner to the next line
             valid_handindex = index >= 0 && index < this.playerHand.getSize();
             if (valid_handindex) picked = this.playerHand.getCardFromHand(index);
 
             // act on the user's choice
-            if (index >= this.playerHand.getSize()) {
+            if (index >= this.playerHand.getSize() || index < -1) {
                 System.out.println("You have chosen an invalid option.  Please try again.");
+            } else if (valid_handindex && !picked.isLegalToPlayOn(CrazyEightsGame.discard)) {
+                // illegal play chosen, pick again
+                System.out.println("The " + picked + " cannot be played on the " + CrazyEightsGame.discard + ".");
             } else if (valid_handindex && picked.isLegalToPlayOn(CrazyEightsGame.discard)) {
                 playCard(picked);
                 break;
-            } else if (index == -1) {
+            } else if (index == -1 && candraw) {
                 // draw a card
                 this.drawCard(CrazyEightsGame.gameDeck);
                 System.out.println("The top of the discard is still a " + CrazyEightsGame.discard + ".");
             } else {
-                // illegal play chosen, pick again
-                System.out.println("The " + picked + " cannot be played on the " + CrazyEightsGame.discard + ".");
-            }  // end if-else
+                //(index == -1 && !candraw) {
+                // user chose to pass because they have no legal plays and cannot draw.
+                return;
+            }   // end if-else
         } // end while
     } // end takeTurn
 

@@ -35,6 +35,10 @@ public class Pile {
         Collections.shuffle(this.pile);
     }
 
+    public int getSize() {
+        return this.pile.size();
+    }
+
     // current implementation doesn't allow drawing from a discard pile.
     // therefore drawCard() is staying in Deck subclass to prevent accidental use.
 
