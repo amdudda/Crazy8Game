@@ -118,7 +118,7 @@ public class CrazyEightsGame {
             p = gp.get(i);
             pScore = getScore(p);
             roundScores.add(pScore);
-            System.out.println(p.getName() + "'s score is: " + pScore + " points.");
+            System.out.println(p.getName() + "'s score is: " + p.playerColor + pScore + " points." + Player.ANSI_RESET_COLOR);
             oldscore = gp.get(i).getScore();
             gp.get(i).setScore(oldscore + pScore);
         }
@@ -136,7 +136,7 @@ public class CrazyEightsGame {
         //setScores(gp);
         int pScore;
         for (Player p : gp) {
-            System.out.println(p.getName() + "'s score is: " + p.getScore() + " points.");
+            System.out.println(p.getName() + "'s score is: " + p.playerColor  + p.getScore() + " points." + Player.ANSI_RESET_COLOR);
         }
         if (gp.get(0).getScore() < gp.get(1).getScore()) {
             System.out.printf("%s %s the game!\n", gp.get(0).getName(), scoretype);

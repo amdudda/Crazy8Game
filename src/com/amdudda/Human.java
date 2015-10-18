@@ -15,6 +15,7 @@ public class Human extends Player {
         this.name = pName;
         this.playerHand = new Hand();
         this.score = 0;
+        this.playerColor = ANSI_RED; // for now, all humans are red.
     }
 
     // take a turn!
@@ -32,11 +33,9 @@ public class Human extends Player {
         4.  once card successfully played, end of turn
         */
 
-
-
         while (true) {
             // print out the player's info
-            System.out.print(this);
+            System.out.print(Colorize(this.toString()));
             // add option zero to draw a card
             // System.out.println("0.) draw a card");
             // and prompt for a choice:
@@ -82,7 +81,7 @@ public class Human extends Player {
             System.out.println("Please make a valid selection.");
         }
         suit_picked = suits[choice];
-        System.out.println(this.name + " declares " + suit_picked);
+        System.out.println(Colorize(this.name + " declares " + suit_picked));
         return suit_picked;
     }
 }

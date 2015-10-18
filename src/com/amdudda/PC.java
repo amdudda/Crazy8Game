@@ -1,5 +1,6 @@
 package com.amdudda;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,6 +16,7 @@ public class PC extends Player {
         this.name = "The computer";
         this.playerHand = new Hand();
         this.score = 0;
+        this.playerColor = ANSI_BLUE;
     }
 
 //    DONE: pick a card to play
@@ -73,7 +75,7 @@ public class PC extends Player {
         // pick a random number and pick that suit from the array and return it
         Random index = new Random();
         int i = index.nextInt(4);
-        System.out.println(this.name + " picks " + suits[i] + ".");
+        System.out.println(Colorize(this.name + " picks " + suits[i] + "."));
         return suits[i];
     }
 
