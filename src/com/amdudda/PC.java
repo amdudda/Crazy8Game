@@ -51,17 +51,17 @@ public class PC extends Player {
     public void takeTurn() {
         Card card = this.pickCard();
         Card disc = CrazyEightsGame.discard;
-        int decksize = CrazyEightsGame.gameDeck.getSize();
+        //int decksize = CrazyEightsGame.gameDeck.getSize();
         // so long the card picked is not a legal play and there are cards available to draw, draw a new card, then try to pick a card again
-        while (!(card.isLegalToPlayOn(disc)) && decksize > 0) {
+        while (!(card.isLegalToPlayOn(disc)) && CrazyEightsGame.gameDeck.getSize() > 0) {
             this.drawCard(CrazyEightsGame.gameDeck);
             System.out.println(Colorize(this.getName() + " draws a card."));
             card = this.pickCard();
         }
         // need logic to deal with if the draw pile has gone down to zero
-        if (!(card.isLegalToPlayOn(disc)) && decksize == 0) {
+        if (!(card.isLegalToPlayOn(disc)) && CrazyEightsGame.gameDeck.getSize() == 0) {
             // no way to play, and the computer passes
-            System.out.println(this.name + " passes.");
+            System.out.println(Colorize(this.name + " passes."));
             return;
         } else {
             // once we have a legal play, play the card.
