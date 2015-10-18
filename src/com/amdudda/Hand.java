@@ -23,7 +23,7 @@ public class Hand {
     @Override
     public String toString(){
         // prints out the contents of the hand
-        String list_of_cards = "";
+        String list_of_cards = "\u001B[0m";  // make sure to set any colors back to their default before printing the list
         for (int i=0; i<this.hand.size(); i++) {
             list_of_cards += (i+1) + ".) " + this.getHand().get(i) + "\n";
         }

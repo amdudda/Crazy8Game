@@ -8,7 +8,7 @@ import java.awt.*;
 public abstract class Player {
     // Player class, will split into polymorphic Human and Computer classes
     // some string constants to help set player colors.
-    protected static final String ANSI_RED = "\u001B[31m";
+    protected static final String ANSI_YELLOW = "\u001B[33m";
     protected static final String ANSI_BLUE = "\u001B[34m";
     protected static final String ANSI_RESET_COLOR = "\u001B[0m";
 

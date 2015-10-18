@@ -5,14 +5,22 @@ package com.amdudda;
  */
 public class Card {
     // card object for Crazy Eights Game
+    // ANSI codes to set card colors
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_BLACK = "\u001B[30m";
+    private static final String ANSI_RESET_COLOR = "\u001B[0m";
 
+    // attributes
     protected String suit;
     protected int value;
+    protected String color;
 
     // constructor
     public Card(String s, int v) {
         this.suit = s;
         this.value = v;
+        if (s.equals("Hearts") || s.equals("Diamonds")) this.color = ANSI_RED;
+        else this.color = ANSI_BLACK;
     }
 
     // setters and getters
@@ -36,7 +44,7 @@ public class Card {
     // misc methods
     @Override
     public String toString() {
-        return this.getFace() + " of " + this.suit;
+        return this.color + this.getFace() + " of " + this.suit + ANSI_RESET_COLOR;
     }
 
     private String getFace() {

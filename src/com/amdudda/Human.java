@@ -15,7 +15,7 @@ public class Human extends Player {
         this.name = pName;
         this.playerHand = new Hand();
         this.score = 0;
-        this.playerColor = ANSI_RED; // for now, all humans are red.
+        this.playerColor = ANSI_YELLOW; // for now, all humans are red.
     }
 
     // take a turn!
