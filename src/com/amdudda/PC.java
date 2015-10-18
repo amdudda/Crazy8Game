@@ -55,10 +55,11 @@ public class PC extends Player {
         // so long the card picked is not a legal play and there are cards available to draw, draw a new card, then try to pick a card again
         while (!(card.isLegalToPlayOn(disc)) && decksize > 0) {
             this.drawCard(CrazyEightsGame.gameDeck);
+            System.out.println(Colorize(this.getName() + " draws a card."));
             card = this.pickCard();
         }
         // need logic to deal with if the draw pile has gone down to zero
-        if (!(card.isLegalToPlayOn(disc)) || decksize == 0) {
+        if (!(card.isLegalToPlayOn(disc)) && decksize == 0) {
             // no way to play, and the computer passes
             System.out.println(this.name + " passes.");
             return;
