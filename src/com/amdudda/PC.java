@@ -61,6 +61,7 @@ public class PC extends Player {
         // need logic to deal with if the draw pile has gone down to zero
         if (!(card.isLegalToPlayOn(disc)) && CrazyEightsGame.gameDeck.getSize() == 0) {
             // no way to play, and the computer passes
+            System.out.println("No cards left in the deck.");
             System.out.println(Colorize(this.name + " passes."));
             return;
         } else {

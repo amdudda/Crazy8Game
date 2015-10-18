@@ -34,6 +34,7 @@ public class Human extends Player {
         */
 
         while (true) {
+            // TODO: pass as a valid play.
             // print out the player's info
             System.out.print(Colorize(this.toString()));
             // add option zero to draw a card

@@ -61,7 +61,8 @@ public abstract class Player {
             return;
         }
 
-        // TODO: pass as a valid play.
+        // DONE: pass as a valid play.
+        // DONE for PC object.  Need to fix Human - right now there's no way to pass if Human has no legal plays.
 
         Card card_to_add = d.drawCard();
         if (!this.name.equals("The computer")) {
