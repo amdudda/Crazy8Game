@@ -1,6 +1,7 @@
 package com.amdudda;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class CrazyEightsGame {
@@ -109,28 +110,37 @@ public class CrazyEightsGame {
             }
     }
 
-    //TODO: Rework scoring so it can deal with multiple human players.
+    // DONE: Rework scoring so it can deal with multiple human players.
     private static void reportRoundScores(ArrayList<Player> gp){
-        ArrayList<Integer> roundScores = new ArrayList<Integer>();
-        Player p;
-        int pScore, oldscore;
-        System.out.println("\nScoring for this round:");
-        for (int i=0; i<gp.size(); i++) {
-            p = gp.get(i);
-            pScore = getScore(p);
-            roundScores.add(pScore);
-            System.out.println(p.getName() + "'s score is: " + p.playerColor + pScore + " points." + Player.ANSI_RESET_COLOR);
-            oldscore = gp.get(i).getScore();
-            gp.get(i).setScore(oldscore + pScore);
+        HashMap<Player,Integer> roundScores = new HashMap<Player,Integer>();
+        int roundScore, updatedScore;
+        // build up our hashmap of players and their scores for this round
+        for (Player p : gp) {
+            roundScore = getScore(p);
+            roundScores.put(p,roundScore);
+            // print out the player's score for the round
+            System.out.println(p.getName() + "'s score is: " + p.playerColor + roundScore + " points." + Player.ANSI_RESET_COLOR);
+            // while we're at it, update the player's score for the game
+            updatedScore = roundScore + p.getScore();
+            p.setScore(updatedScore);
         }
-        // for now it's a 2-player game, so just do a simple comparison of scores
-        if (roundScores.get(0) < roundScores.get(1)) {
-            System.out.printf("%s wins the round!\n", gp.get(0).getName());
-        } else if (roundScores.get(0) > roundScores.get(1)) {
-            System.out.printf("%s wins the round!\n", gp.get(1).getName());
-        } else {
-            System.out.printf("The round is tied!\n");
+
+        // grab the first player's score just to have an existing score to set minScore to.
+        int minScore = roundScores.get(gp.get(0)), cur_player_score;
+        String winnerlist = "";
+        // then find the round winners
+        for (Player p : gp) {
+            cur_player_score = roundScores.get(p);
+            // if it's the first winner we've found, just add their name; otherwise precede it with & to create concatenation.
+            if (cur_player_score == minScore && winnerlist.isEmpty()) {
+                winnerlist = p.getName();
+            } else if (cur_player_score == minScore) {
+                winnerlist += " & " + p.getName();
+            }
         }
+
+        System.out.printf("%s wins the round!\n", winnerlist);
+
     }
 
     private static void reportGameScores(ArrayList<Player> gp, String scoretype) {
