@@ -30,8 +30,12 @@ public class Deck extends Pile {
             } // end run through suits
         }  // end run through card numbers
 
+        // TODO: Second constructor that enables me to convert an existing Stack (or do I want to keep Pile object?) to a Deck.
+
+
 //        TODO: why does this not inherit?
-//        this.drawPile.shuffle();
+//      I don't actually want .shuffle in Pile, but it's important to understand for future coding.
+//      this.drawPile.shuffle();
 
         // shuffle the deck
         Collections.shuffle(this.drawPile);

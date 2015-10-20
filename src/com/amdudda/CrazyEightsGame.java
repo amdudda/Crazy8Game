@@ -134,18 +134,24 @@ public class CrazyEightsGame {
     }
 
     private static void reportGameScores(ArrayList<Player> gp, String scoretype) {
-        //setScores(gp);
-        int pScore;
+        int minScore = gp.get(0).getScore();  // need to seed lowest score with an exiting value
+        String winnerlist = "";
         for (Player p : gp) {
             System.out.println(p.getName() + "'s score is: " + p.playerColor  + p.getScore() + " points." + Player.ANSI_RESET_COLOR);
+            if (p.getScore() < minScore) { minScore = p.getScore(); }
         }
-        if (gp.get(0).getScore() < gp.get(1).getScore()) {
-            System.out.printf("%s %s the game!\n", gp.get(0).getName(), scoretype);
-        } else if (gp.get(0).getScore() > gp.get(1).getScore()) {
-            System.out.printf("%s %s the game!\n", gp.get(1).getName(), scoretype);
-        } else {
-            System.out.printf("The game is tied!\n", scoretype);
+
+        // get a list of game winners now that we know what the lowest score is
+        for (Player p : gp) {
+            if (p.getScore() == minScore && winnerlist.isEmpty()) {
+                winnerlist = p.getName();
+            } else if (p.getScore() == minScore) {
+                winnerlist += " & " + p.getName();
+            }
         }
+
+        // announce the winner(s)
+        System.out.printf("%s %s the game!\n", winnerlist, scoretype);
 
     }
 

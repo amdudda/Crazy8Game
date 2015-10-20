@@ -38,14 +38,14 @@ public class Human extends Player {
             // print out the player's info
             System.out.print(Colorize(this.toString()));
             candraw = (CrazyEightsGame.gameDeck.getSize() != 0);
-            // add option zero to draw a card
-            // System.out.println("0.) draw a card");
+
             // and prompt for a choice:
             if (candraw) {
                 System.out.println("Choose a card to play or enter 0 to draw a card:");
             } else {
                 System.out.println("Choose a card to play or enter 0 to pass (no cards left to draw).");
             }
+            // TODO: error trapping for input
             int index = s.nextInt() - 1;
             s.nextLine(); // move the scanner to the next line
             valid_handindex = index >= 0 && index < this.playerHand.getSize();
