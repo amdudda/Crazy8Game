@@ -114,10 +114,14 @@ public class CrazyEightsGame {
     private static void reportRoundScores(ArrayList<Player> gp){
         HashMap<Player,Integer> roundScores = new HashMap<Player,Integer>();
         int roundScore, updatedScore;
+        // grab the first player's score just to have an existing score to set minScore to.
+        int minScore = getScore(gp.get(0));
         // build up our hashmap of players and their scores for this round
         for (Player p : gp) {
             roundScore = getScore(p);
             roundScores.put(p,roundScore);
+            // need to keep track of what the lowest score is, for this round
+            if (roundScore < minScore) { roundScore = minScore; }
             // print out the player's score for the round
             System.out.println(p.getName() + "'s score is: " + p.playerColor + roundScore + " points." + Player.ANSI_RESET_COLOR);
             // while we're at it, update the player's score for the game
@@ -125,10 +129,9 @@ public class CrazyEightsGame {
             p.setScore(updatedScore);
         }
 
-        // grab the first player's score just to have an existing score to set minScore to.
-        int minScore = roundScores.get(gp.get(0)), cur_player_score;
+        int cur_player_score;
         String winnerlist = "";
-        // then find the round winners
+        // then find the round winner(s)
         for (Player p : gp) {
             cur_player_score = roundScores.get(p);
             // if it's the first winner we've found, just add their name; otherwise precede it with & to create concatenation.
@@ -139,6 +142,7 @@ public class CrazyEightsGame {
             }
         }
 
+        // and announce the winner(s)
         System.out.printf("%s wins the round!\n", winnerlist);
 
     }
