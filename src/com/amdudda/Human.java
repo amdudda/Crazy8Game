@@ -1,5 +1,6 @@
 package com.amdudda;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -38,6 +39,7 @@ public class Human extends Player {
             // print out the player's info
             System.out.print(Colorize(this.toString()));
             candraw = (CrazyEightsGame.gameDeck.getSize() != 0);
+            int index;
 
             // and prompt for a choice:
             if (candraw) {
@@ -45,8 +47,17 @@ public class Human extends Player {
             } else {
                 System.out.println("Choose a card to play or enter 0 to pass (no cards left to draw).");
             }
-            // TODO: error trapping for input
-            int index = s.nextInt() - 1;
+            // DONE: error trapping for non-integer input
+            while (true) {
+                try {
+                    index = s.nextInt() - 1;
+                    break;
+                } catch (InputMismatchException ioe) {
+                    // alert the user and move the scanner to the next line.
+                    System.out.println("Please enter a whole number.");
+                    s.nextLine();
+                }
+            }
             s.nextLine(); // move the scanner to the next line
             valid_handindex = index >= 0 && index < this.playerHand.getSize();
             if (valid_handindex) picked = this.playerHand.getCardFromHand(index);
