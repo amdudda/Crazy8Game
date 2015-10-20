@@ -30,9 +30,6 @@ public class Deck extends Pile {
             } // end run through suits
         }  // end run through card numbers
 
-        // TODO: Second constructor that enables me to convert an existing Stack (or do I want to keep Pile object?) to a Deck.
-
-
 //        TODO: why does this not inherit?
 //      I don't actually want .shuffle in Pile, but it's important to understand for future coding.
 //      this.drawPile.shuffle();
@@ -41,6 +38,19 @@ public class Deck extends Pile {
         Collections.shuffle(this.drawPile);
 
     }  // end constructor
+
+    // DONE: Second constructor that enables me to convert an existing Stack (or do I want to keep Pile object?) to a Deck.
+    public Deck(Stack<Card> pile_of_cards) {
+        // overloading to let me convert a Stack (Pile?  can be coded now and final decision made later- minimal revisions needed.) to a Deck
+        this.drawPile = new Stack<Card>();
+        // copy the pile of cards to the deck
+        this.drawPile.addAll(pile_of_cards);
+        // shuffle the deck
+        Collections.shuffle(this.drawPile);
+        // QUESTION: do we want to automatically clear pile_of_cards?
+        // For crazy eights, yes, because we want to have a new discard pile
+        // TODO: top of discard stays on play area and is the seed for the new discard pile.
+    }
 
     // getter for deck - duplicates getPile(), but useful for nomenclature match
     protected Stack<Card> getDeck() {

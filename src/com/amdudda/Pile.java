@@ -42,16 +42,4 @@ public class Pile {
     // current implementation doesn't allow drawing from a discard pile.
     // therefore drawCard() is staying in Deck subclass to prevent accidental use.
 
-    public Deck convertToDeck() {
-        // converts the pile to a deck that can be drawn from
-        Deck deck = new Deck();
-        // clear the cards autoloaded into the deck by the constructor.
-        deck.getDeck().clear();
-        // add the elements of the pile to the new deck object
-        deck.getDeck().addAll(this.pile);
-        // shuffle the new deck
-        deck.shuffle();
-        // and return it.
-        return deck;
-    }
 }
