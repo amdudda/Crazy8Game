@@ -17,7 +17,7 @@ public class Pile {
 
     // getter for pile
     protected Stack<Card> getPile() {
-        return  this.pile;
+        return this.pile;
     }
 
     // read top card of pile
