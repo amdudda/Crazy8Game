@@ -16,15 +16,8 @@ public abstract class Player {
     protected String name;
     protected Hand playerHand;
     protected String playerColor;
-    protected int score;
-    protected int roundscore;
-
-    /*// Constructor
-    public Player(String pName) {
-        // creates a player and deals them a hand
-        this.name = pName;
-        this.playerHand = new Hand();
-    }*/
+    protected int score=0;
+    protected int roundscore=0;
 
     //public abstract Card pickCard();
     public abstract void takeTurn();
