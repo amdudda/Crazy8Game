@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Hand {
     // this is an arraylist holding a bunch of cards
     protected ArrayList<Card> myHand;
-    public static final int START_SIZE = 5;
+    private static final int START_SIZE = 5;  // makes default hand size easy to alter
 
     // Constructor
     // Done: this seeds a bunch of cards from the draw my_pile - need to code that first

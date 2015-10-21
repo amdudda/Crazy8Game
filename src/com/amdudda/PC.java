@@ -6,7 +6,7 @@ import java.util.Random;
  * Created by amdudda on 10/13/15.
  */
 public class PC extends Player {
-    // and this facilitates automatic play by the computer.
+    // This facilitates automatic play by the computer.
 
     // constructor
     public PC() {

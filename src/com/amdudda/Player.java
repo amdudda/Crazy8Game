@@ -12,14 +12,14 @@ public abstract class Player {
     protected static final String ANSI_BLUE = "\u001B[34m";
     protected static final String ANSI_RESET_COLOR = "\u001B[0m";
 
-    // attributes of all players - protected instead of private so sublcasses can access & inherit
+    // attributes of all players - protected instead of private so subclasses can access & inherit
     protected String name;
     protected Hand playerHand;
     protected String playerColor;
     protected int score=0;
     protected int roundscore=0;
 
-    //public abstract Card pickCard();
+    // some methods my child objects MUST have
     public abstract void takeTurn();
     public abstract String pickSuit();
 
@@ -28,7 +28,7 @@ public abstract class Player {
         return this.name + "'s myHand is: \n" + playerHand.toString();
     }
 
-    // setter & getter for name & score
+    // various setters & getters
     public String getName() {
         return this.name;
     }
@@ -48,6 +48,7 @@ public abstract class Player {
     public void setRoundScore(int r_score) { this.roundscore = r_score; }
 
     protected Hand getPlayerHand() { return this.playerHand; }
+    // end setters & getters
 
     // misc methods
     public void drawCard(Deck d){
@@ -55,12 +56,10 @@ public abstract class Player {
         // I'm passing a Deck variable here so the program is extensible to games with multiple decks to draw from
         // make sure the deck isn't empty before trying to draw from it...
         if (d.getSize() == 0) {
+            // DONE: pass as a valid play.
             System.out.println("No cards left in deck!  You must play a card.");
             return;
         }
-
-        // DONE: pass as a valid play.
-        // DONE for PC object.  Need to fix Human - right now there's no way to pass if Human has no legal plays.
 
         Card card_to_add = d.drawCard();
         if (!this.name.equals("The computer")) {
@@ -69,11 +68,11 @@ public abstract class Player {
         }
         // it's Player's job to draw a card, but it's Hand object's responsibility to keep track of it
         this.playerHand.addCard(card_to_add);
-        
-        //playerHand.addCard(Crazy8Game.yourDeck.drawCard());  //?
+
     }
 
     public void playCard(Card c) {
+        // DONE: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
         // updates the value of the top of the discardPile, updates the value of discard,
         // and removes the card from player's myHand.
         CrazyEightsGame.discard = c;

@@ -8,14 +8,14 @@ import java.util.Scanner;
  */
 public class Human extends Player {
     // this is an extension of player to facilitate a human player
-    // no new attributes yet
+    // no new attributes - they're all inherited
 
     // constructor
     public Human(String pName) {
         // creates a human player and deals them a myHand
         this.name = pName;
         this.playerHand = new Hand();
-        this.playerColor = ANSI_YELLOW; // for now, all humans are red.
+        this.playerColor = ANSI_YELLOW; // for now, all humans are yellow.
     }
 
     // take a turn!
@@ -34,8 +34,7 @@ public class Human extends Player {
         */
 
         while (true) {
-            // DONE: pass as a valid play.
-            // print out the player's info
+            // print out the player's hand so they can pick a card
             System.out.print(Colorize(this.toString()));
             candraw = (CrazyEightsGame.gameDeck.getSize() != 0);
             int index;
@@ -68,6 +67,7 @@ public class Human extends Player {
                 // illegal play chosen, pick again
                 System.out.println("The " + picked + " cannot be played on the " + CrazyEightsGame.discard + ".");
             } else if (valid_handindex && picked.isLegalToPlayOn(CrazyEightsGame.discard)) {
+                // valid play picked, play it and break out of loop
                 playCard(picked);
                 break;
             } else if (index == -1 && candraw) {
@@ -75,9 +75,10 @@ public class Human extends Player {
                 this.drawCard(CrazyEightsGame.gameDeck);
                 System.out.println("The top of the discard is still a " + CrazyEightsGame.discard + ".");
             } else {
-                //(index == -1 && !candraw) {
+                // presumably: (index == -1 && !candraw)
+                // DONE: pass as a valid play.
                 // user chose to pass because they have no legal plays and cannot draw.
-                return;
+                return;  // go back to calling method and do nothing.
             }   // end if-else
         } // end while
     } // end takeTurn

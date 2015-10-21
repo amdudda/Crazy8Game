@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class CrazyEightsGame {
 
     public static Deck gameDeck;  // the game only has a single deck to draw from
-    public static Pile discardPile; // the discard my_pile, in case we want to implement reshuffling.
+    public static Pile discardPile; // the discard pile, in case we want to implement reshuffling.
     public static Card discard; // and only one card to worry about in actual gameplay - if an 8, may be different from top of discardPile.
     public static Scanner scanner;  // scanner for player input
 
@@ -36,8 +36,6 @@ public class CrazyEightsGame {
         3.  #2 repeats so long as two conditions are met: nobody's myHand is empty and the deck is not empty.
          */
 
-
-        // DONE: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
         while (true) {
             System.out.println("Shuffling deck...");
             System.out.println("Dealing cards...");
