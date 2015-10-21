@@ -30,11 +30,6 @@ public class Pile {
         this.pile.add(c);
     }
 
-    public void shuffle() {
-        // shuffles a pile or deck
-        Collections.shuffle(this.pile);
-    }
-
     public int getSize() {
         return this.pile.size();
     }

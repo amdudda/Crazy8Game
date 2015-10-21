@@ -30,10 +30,6 @@ public class Deck extends Pile {
             } // end run through suits
         }  // end run through card numbers
 
-//        TODO: why does this not inherit?
-//      I don't actually want .shuffle in Pile, but it's important to understand for future coding.
-//      this.pile.shuffle();
-
         // shuffle the deck
         Collections.shuffle(this.pile);
 
