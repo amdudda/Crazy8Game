@@ -1,7 +1,5 @@
 package com.amdudda;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -12,7 +10,7 @@ public class PC extends Player {
 
     // constructor
     public PC() {
-        // creates a computer player and deals them a hand
+        // creates a computer player and deals them a myHand
         this.name = "The computer";
         this.playerHand = new Hand();
         this.playerColor = ANSI_BLUE;
@@ -24,21 +22,21 @@ public class PC extends Player {
         Card disc = CrazyEightsGame.discard;
 
         // first try to find a numeric match
-        for (Card c:this.playerHand.getHand()) {
+        for (Card c:this.playerHand.getMyHand()) {
             if (c.value !=8 && c.value == disc.getValue()) {
                 return c;
             }
         }
 
         // then try to match the suit
-        for (Card c:this.playerHand.getHand()) {
+        for (Card c:this.playerHand.getMyHand()) {
             if (c.value !=8 && c.suit.equals(disc.getSuit())) {
                 return c;
             }
         }
 
         // okay, now let's check for eights
-        for (Card c:this.playerHand.getHand()) {
+        for (Card c:this.playerHand.getMyHand()) {
             if (c.value == 8) { return c; }
         }
 

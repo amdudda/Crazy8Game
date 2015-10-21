@@ -37,6 +37,7 @@ public class Pile {
     // therefore drawCard() is staying in Deck subclass to prevent accidental use.
 
     public Deck convertToDeck() {
+        // TODO: HAS NOT BEEN TESTED - not implemented in this version of the game!
         /*
          Top of discard stays on play area and is the seed for the new discard pile.
          so we need a way to convert discard pile to a deck without messing with the

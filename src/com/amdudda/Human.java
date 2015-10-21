@@ -12,7 +12,7 @@ public class Human extends Player {
 
     // constructor
     public Human(String pName) {
-        // creates a human player and deals them a hand
+        // creates a human player and deals them a myHand
         this.name = pName;
         this.playerHand = new Hand();
         this.playerColor = ANSI_YELLOW; // for now, all humans are red.
@@ -26,7 +26,7 @@ public class Human extends Player {
         boolean valid_handindex, candraw;
         /*
         Human turn's logic:
-        1.  list out hand and add option 0 = draw a card
+        1.  list out myHand and add option 0 = draw a card
         2.  if player chooses a legal play, play the card
         3.  else if == 0, draw a card and loop
         4.  else loop and pick again

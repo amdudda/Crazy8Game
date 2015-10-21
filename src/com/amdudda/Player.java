@@ -25,7 +25,7 @@ public abstract class Player {
 
     @Override
     public String toString() {
-        return this.name + "'s hand is: \n" + playerHand.toString();
+        return this.name + "'s myHand is: \n" + playerHand.toString();
     }
 
     // setter & getter for name & score
@@ -51,7 +51,7 @@ public abstract class Player {
 
     // misc methods
     public void drawCard(Deck d){
-        // draw a card from the deck and add it to the player's hand
+        // draw a card from the deck and add it to the player's myHand
         // I'm passing a Deck variable here so the program is extensible to games with multiple decks to draw from
         // make sure the deck isn't empty before trying to draw from it...
         if (d.getSize() == 0) {
@@ -75,12 +75,12 @@ public abstract class Player {
 
     public void playCard(Card c) {
         // updates the value of the top of the discardPile, updates the value of discard,
-        // and removes the card from player's hand.
+        // and removes the card from player's myHand.
         CrazyEightsGame.discard = c;
         CrazyEightsGame.discardPile.addCard(c);
         this.playerHand.dropCard(c);
         System.out.println(Colorize(this.name + " plays a " + c));
-        System.out.println(Colorize(this.name + " has " + this.playerHand.getSize() + " card(s) in hand."));
+        System.out.println(Colorize(this.name + " has " + this.playerHand.getSize() + " card(s) in myHand."));
         if (CrazyEightsGame.discard.getValue() == 8) { CrazyEightsGame.discard.setSuit(pickSuit()); }
     }
 

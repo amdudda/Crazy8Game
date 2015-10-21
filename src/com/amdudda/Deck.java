@@ -35,10 +35,12 @@ public class Deck extends Pile {
 
     }  // end constructor
 
+
     // DONE: Second constructor that enables me to convert an existing Stack
     // (or do I want to keep Pile object?) to a Deck.  Not actually used in
     // implementation, so this is mostly an intellectual exercise.
     public Deck(Pile pile_of_cards) {
+        // TODO: HAS NOT BEEN TESTED - not implemented in this version of the game!
         // overloading to let me convert a Stack (Pile?  can be coded now and final decision made later- minimal revisions needed.) to a Deck
         this.my_pile = new Stack<Card>();
         // copy the my_pile of cards to the deck
@@ -61,8 +63,5 @@ public class Deck extends Pile {
         // draw a card from the Deck
         return this.my_pile.pop();
     }
-/*
-    public int getSize() {
-        return this.my_pile.size();
-    }*/
+
 }
