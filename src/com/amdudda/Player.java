@@ -17,6 +17,7 @@ public abstract class Player {
     protected Hand playerHand;
     protected String playerColor;
     protected int score;
+    protected int roundscore;
 
     /*// Constructor
     public Player(String pName) {
@@ -48,6 +49,10 @@ public abstract class Player {
     public void setScore(int gameScore) {
         this.score = gameScore;
     }
+
+    public int getRoundScore() { return roundscore; }
+
+    public void setRoundScore(int r_score) { this.roundscore = r_score; }
 
     protected Hand getPlayerHand() { return this.playerHand; }
 
@@ -85,6 +90,10 @@ public abstract class Player {
         System.out.println(Colorize(this.name + " has " + this.playerHand.getSize() + " card(s) in hand."));
         if (CrazyEightsGame.discard.getValue() == 8) { CrazyEightsGame.discard.setSuit(pickSuit()); }
     }
+
+    public String printRoundScore() { return Colorize(this.roundscore + " points."); }
+
+    public String printGameScore() { return Colorize(this.score + " points."); }
 
     protected String Colorize(String str) {
         return(this.playerColor + str + ANSI_RESET_COLOR);

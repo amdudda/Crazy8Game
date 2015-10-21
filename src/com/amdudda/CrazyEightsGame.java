@@ -112,20 +112,19 @@ public class CrazyEightsGame {
 
     // DONE: Rework scoring so it can deal with multiple human players.
     private static void reportRoundScores(ArrayList<Player> gp){
-        HashMap<Player,Integer> roundScores = new HashMap<Player,Integer>();
-        int roundScore, updatedScore;
+        int updatedScore;
         // grab the first player's score just to have an existing score to set minScore to.
         int minScore = getScore(gp.get(0));
-        // build up our hashmap of players and their scores for this round
+
         for (Player p : gp) {
-            roundScore = getScore(p);
-            roundScores.put(p,roundScore);
+            // update player's score for the round
+            p.setRoundScore(getScore(p));
             // need to keep track of what the lowest score is, for this round
-            if (roundScore < minScore) { roundScore = minScore; }
+            if (p.getRoundScore() < minScore) { minScore = p.getRoundScore(); }
             // print out the player's score for the round
-            System.out.println(p.getName() + "'s score is: " + p.playerColor + roundScore + " points." + Player.ANSI_RESET_COLOR);
+            System.out.println(p.getName() + "'s score is: " + p.printRoundScore());
             // while we're at it, update the player's score for the game
-            updatedScore = roundScore + p.getScore();
+            updatedScore = p.getRoundScore() + p.getScore();
             p.setScore(updatedScore);
         }
 
@@ -133,7 +132,7 @@ public class CrazyEightsGame {
         String winnerlist = "";
         // then find the round winner(s)
         for (Player p : gp) {
-            cur_player_score = roundScores.get(p);
+            cur_player_score = p.getRoundScore();
             // if it's the first winner we've found, just add their name; otherwise precede it with & to create concatenation.
             if (cur_player_score == minScore && winnerlist.isEmpty()) {
                 winnerlist = p.getName();
@@ -151,7 +150,7 @@ public class CrazyEightsGame {
         int minScore = gp.get(0).getScore();  // need to seed lowest score with an exiting value
         String winnerlist = "";
         for (Player p : gp) {
-            System.out.println(p.getName() + "'s score is: " + p.playerColor  + p.getScore() + " points." + Player.ANSI_RESET_COLOR);
+            System.out.println(p.getName() + "'s score is: " + p.printGameScore());
             if (p.getScore() < minScore) { minScore = p.getScore(); }
         }
 
