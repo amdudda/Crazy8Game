@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class CrazyEightsGame {
 
     public static Deck gameDeck;  // the game only has a single deck to draw from
-    public static Pile discardPile; // the discard pile, in case we want to implement reshuffling.
+    public static Pile discardPile; // the discard my_pile, in case we want to implement reshuffling.
     public static Card discard; // and only one card to worry about in actual gameplay - if an 8, may be different from top of discardPile.
     public static Scanner scanner;  // scanner for player input
 
@@ -19,7 +19,7 @@ public class CrazyEightsGame {
         gameDeck = new Deck();
         discardPile = new Pile();
         discard = gameDeck.drawCard();
-        // DONE: Implement superclass Pile so discard pile can be recycled in "reshuffling" versions of game.
+        // DONE: Implement superclass Pile so discard my_pile can be recycled in "reshuffling" versions of game.
         scanner = new Scanner(System.in);
 
         // set up our players - using an ArrayList simplifies adding multiple players
@@ -43,7 +43,7 @@ public class CrazyEightsGame {
             System.out.println("Dealing cards...");
 
             System.out.println("The top card of the deck is flipped over and play begins!");
-            System.out.println("The current top of the discard pile is a " + discard + ".");
+            System.out.println("The current top of the discard my_pile is a " + discard + ".");
             while (!isGameOver(gamePlayers)) {
                 for (Player p : gamePlayers) {
                     p.takeTurn();

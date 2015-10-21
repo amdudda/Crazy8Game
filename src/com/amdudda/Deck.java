@@ -8,13 +8,13 @@ import java.util.Stack;
  * Created by amdudda on 10/12/2015.
  */
 public class Deck extends Pile {
-    // a Stack storing the draw pile
-    //protected Stack<Card> pile;
+    // a Stack storing the draw my_pile
+    //protected Stack<Card> my_pile;
 
     // Constructor
     public Deck() {
-        // creates a new draw pile
-        this.pile = new Stack<Card>();
+        // creates a new draw my_pile
+        this.my_pile = new Stack<Card>();
 
         // set up an interable list of our suits
         ArrayList<String> suits = new ArrayList<String>();
@@ -26,43 +26,43 @@ public class Deck extends Pile {
         // and populate our Deck.
         for (String j : suits) {
             for (int i = 1; i < 14; i++) {
-                this.pile.add(new Card(j, i));
+                this.my_pile.add(new Card(j, i));
             } // end run through suits
         }  // end run through card numbers
 
         // shuffle the deck
-        Collections.shuffle(this.pile);
+        Collections.shuffle(this.my_pile);
 
     }  // end constructor
 
     // DONE: Second constructor that enables me to convert an existing Stack
     // (or do I want to keep Pile object?) to a Deck.  Not actually used in
     // implementation, so this is mostly an intellectual exercise.
-    public Deck(Stack<Card> pile_of_cards) {
+    public Deck(Pile pile_of_cards) {
         // overloading to let me convert a Stack (Pile?  can be coded now and final decision made later- minimal revisions needed.) to a Deck
-        this.pile = new Stack<Card>();
-        // copy the pile of cards to the deck
-        this.pile.addAll(pile_of_cards);
+        this.my_pile = new Stack<Card>();
+        // copy the my_pile of cards to the deck
+        this.my_pile.addAll(pile_of_cards.getMy_pile());
         // shuffle the deck
-        Collections.shuffle(this.pile);
+        Collections.shuffle(this.my_pile);
         // QUESTION: do we want to automatically clear pile_of_cards?
-        // For crazy eights, yes, because we want to have a new discard pile
-        // TODO: top of discard stays on play area and is the seed for the new discard pile.
+        // For crazy eights, yes, because we want to have a new discard my_pile
+        // DONE: top of discard stays on play area and is the seed for the new discard my_pile.
     }
 
-    // getter for deck - duplicates getPile(), but useful for nomenclature match
+    // getter for deck - duplicates getMy_pile(), but useful for nomenclature match
     protected Stack<Card> getDeck() {
-        // returns the draw pile I've generated
-        return this.pile;
+        // returns the draw my_pile I've generated
+        return this.my_pile;
     }
 
     // misc methods
     public Card drawCard() {
         // draw a card from the Deck
-        return this.pile.pop();
+        return this.my_pile.pop();
     }
 /*
     public int getSize() {
-        return this.pile.size();
+        return this.my_pile.size();
     }*/
 }

@@ -11,7 +11,7 @@ public class Hand {
     public static final int START_SIZE = 5;
 
     // Constructor
-    // Done: this seeds a bunch of cards from the draw pile - need to code that first
+    // Done: this seeds a bunch of cards from the draw my_pile - need to code that first
     public Hand() {
         this.hand = new ArrayList<Card>();
         // draw cards from the deck till we've got a starting hand
