@@ -95,6 +95,10 @@ public abstract class Player {
 
     public String printGameScore() { return Colorize(this.score + " points."); }
 
+    public int getHandValue() {
+        return this.playerHand.getHandPoints();
+    }
+
     protected String Colorize(String str) {
         return(this.playerColor + str + ANSI_RESET_COLOR);
     }

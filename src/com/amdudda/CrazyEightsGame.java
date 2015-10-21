@@ -96,29 +96,16 @@ public class CrazyEightsGame {
         return false;
     }
 
-    private static int getScore(Player p) {
-        // calculates the player's score for the round
-            Hand pH = p.getPlayerHand();
-            int roundScore = 0;
-            if (pH.getSize() == 0) {
-                return 0;
-            } else {
-                for (int i = 0; i < pH.getSize(); i++) {
-                    roundScore += pH.getCardFromHand(i).getValue();
-                }
-                return roundScore;
-            }
-    }
 
     // DONE: Rework scoring so it can deal with multiple human players.
     private static void reportRoundScores(ArrayList<Player> gp){
         int updatedScore;
         // grab the first player's score just to have an existing score to set minScore to.
-        int minScore = getScore(gp.get(0));
+        int minScore = (gp.get(0).getHandValue());
 
         for (Player p : gp) {
             // update player's score for the round
-            p.setRoundScore(getScore(p));
+            p.setRoundScore(p.getHandValue());
             // need to keep track of what the lowest score is, for this round
             if (p.getRoundScore() < minScore) { minScore = p.getRoundScore(); }
             // print out the player's score for the round

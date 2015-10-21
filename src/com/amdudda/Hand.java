@@ -51,4 +51,12 @@ public class Hand {
     public void dropCard(Card c) {
         this.hand.remove(c);
     }
+
+    public int getHandPoints() {
+        int points = 0;
+        for (Card c:this.hand) {
+            points += c.value;
+        }
+        return points;
+    }
 }
