@@ -2,6 +2,7 @@ package com.amdudda;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 public class CrazyEightsGame {
@@ -15,27 +16,19 @@ public class CrazyEightsGame {
         // write your code here
         // Crazy Eights game
 
-        // create our deck, scanner, and pop the card off gameDeck to create our current discarded card
-        gameDeck = new Deck();
-        discardPile = new Pile();
-        discard = gameDeck.drawCard();
-        // DONE: Implement superclass Pile so discard my_pile can be recycled in "reshuffling" versions of game.
-        scanner = new Scanner(System.in);
+        /*
+        outline of game play:
+        1.  initialize decks & set up players - for now 1 PC and 1 Human
+        2.  a player takes a turn
+        3.  #2 repeats so long as two conditions are met: nobody's hand is empty and the deck is not empty.
+         */
 
         // set up our players - using an ArrayList simplifies adding multiple players
         ArrayList<Player> gamePlayers = new ArrayList<Player>();
-        gamePlayers.add(new Human(getPlayerName()));
-        gamePlayers.add(new PC());
-        //gamePlayers.add(new PC());
-        String keep_playing;
+        // and initialize the game
+        initializeGame(gamePlayers);
 
-        /*
-        outline of game play:
-        1.  set up players - for now 1 PC and 1 Human
-        2.  a player takes a turn
-        3.  #2 repeats so long as two conditions are met: nobody's myHand is empty and the deck is not empty.
-         */
-
+        String keep_playing;  // needed to facilitate exiting while-true loop
         while (true) {
             System.out.println("Shuffling deck...");
             System.out.println("Dealing cards...");
@@ -61,7 +54,7 @@ public class CrazyEightsGame {
             System.out.println("\nWould you like to play another round (y/n)?");
             keep_playing = scanner.nextLine();
             // if they say no, stop the game.
-            if (keep_playing.equals("n")) {
+            if (keep_playing.equalsIgnoreCase("n")) {
                 break;
             } else {
                 // if the game continues, we need to create a new deck and restart play.
@@ -80,6 +73,24 @@ public class CrazyEightsGame {
 
         // close the scanner when the game is over
         scanner.close();
+    }
+
+    private static void initializeGame(ArrayList<Player> gP) {
+        // create our deck, scanner, and pop the card off gameDeck to create our current discarded card
+        gameDeck = new Deck();
+        discardPile = new Pile();
+        discard = gameDeck.drawCard();
+        // DONE: Implement superclass Pile so discard my_pile can be recycled in "reshuffling" versions of game.
+        scanner = new Scanner(System.in);
+
+        // and set up our players
+        gP.add(new Human(getPlayerName()));
+        gP.add(new PC());
+
+        // todo - randomize who goes first
+        Random r_num = new Random();
+        int p_num = r_num.nextInt(2);
+        System.out.println("player picked was: " + p_num);
     }
 
     private static boolean isGameOver(ArrayList<Player> gp) {
