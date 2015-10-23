@@ -57,6 +57,12 @@ public class Card {
         }
     }
 
+    protected void fixColor() {
+        // updates color for when an 8's suit is declared
+        if (this.suit.equals("Hearts") || this.suit.equals("Diamonds")) this.color = ANSI_RED;
+        else this.color = ANSI_BLACK;
+    }
+
     protected boolean isLegalToPlayOn(Card c) {
         // decides whether the card is a legal play
         // longer name to make it clearer what it's actually evaluating

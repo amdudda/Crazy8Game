@@ -82,7 +82,13 @@ public abstract class Player {
         System.out.println(Colorize(this.name + " has " + this.playerHand.getSize() + " card(s) in their hand."));
         // need to make sure player hasn't just played their last card before prompting for suit.
         // otherwise, bug in code causes new round to begin immediately.
-        if (CrazyEightsGame.discard.getValue() == 8 && this.playerHand.getSize() != 0) { CrazyEightsGame.discard.setSuit(pickSuit()); }
+        if (CrazyEightsGame.discard.getValue() == 8 && this.playerHand.getSize() != 0) {
+            // pick a new suit and set the 8's suit to be that suit
+            CrazyEightsGame.discard.setSuit(pickSuit());
+            // also update the color displayed for the top of the discard pile
+            CrazyEightsGame.discard.fixColor();
+            System.out.println("Top of discard is now " + CrazyEightsGame.discard);
+        }
     }
 
     public String printRoundScore() { return Colorize(this.roundscore + " points."); }
