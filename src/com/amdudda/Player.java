@@ -87,7 +87,7 @@ public abstract class Player {
             CrazyEightsGame.discard.setSuit(pickSuit());
             // also update the color displayed for the top of the discard pile
             CrazyEightsGame.discard.fixColor();
-            System.out.println("Top of discard is now " + CrazyEightsGame.discard);
+            System.out.println("Top of the discard pile is now " + CrazyEightsGame.discard);
         }
     }
 

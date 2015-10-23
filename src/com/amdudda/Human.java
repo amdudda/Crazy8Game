@@ -73,7 +73,7 @@ public class Human extends Player {
             } else if (index == -1 && candraw) {
                 // draw a card
                 this.drawCard(CrazyEightsGame.gameDeck);
-                System.out.println("The top of the discard is still a " + CrazyEightsGame.discard + ".");
+                System.out.println("The top of the discard pile is still a " + CrazyEightsGame.discard + ".");
             } else {
                 // presumably: (index == -1 && !candraw)
                 // DONE: pass as a valid play.
