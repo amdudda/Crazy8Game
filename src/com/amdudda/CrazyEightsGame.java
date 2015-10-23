@@ -87,10 +87,14 @@ public class CrazyEightsGame {
         gP.add(new Human(getPlayerName()));
         gP.add(new PC());
 
-        // todo - randomize who goes first
+        // randomize who goes first
         Random r_num = new Random();
         int p_num = r_num.nextInt(2);
-        System.out.println("player picked was: " + p_num);
+        // two player game, if computer picked, move human player to end of arraylist
+        if (p_num == 1) gP.add(gP.remove(0));
+        // announce who goes first
+        System.out.println(gP.get(0).getName() + " plays first!");
+
     }
 
     private static boolean isGameOver(ArrayList<Player> gp) {
