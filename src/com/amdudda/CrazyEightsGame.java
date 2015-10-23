@@ -25,7 +25,7 @@ public class CrazyEightsGame {
 
         // set up our arraylist to store our players - using an ArrayList simplifies adding multiple players
         ArrayList<Player> gamePlayers = new ArrayList<Player>();
-        // and initialize the game
+        // initialize the game
         initializeGame(gamePlayers);
 
         // and start playing the game
@@ -52,10 +52,10 @@ public class CrazyEightsGame {
         gP.add(new Human(getPlayerName()));
         gP.add(new PC());
 
-        // randomize who goes first
+        // randomize who goes first - use gp.size so we can update code to handle multiple players.
         Random r_num = new Random();
-        int p_num = r_num.nextInt(2);
-        // two player game, if computer picked, move human player to end of arraylist
+        int p_num = r_num.nextInt(gP.size());
+        // two player game: if computer picked, move human player to end of arraylist
         if (p_num == 1) gP.add(gP.remove(0));
         // announce who goes first
         System.out.println(gP.get(0).getName() + " plays first!");
