@@ -23,11 +23,47 @@ public class CrazyEightsGame {
         3.  #2 repeats so long as two conditions are met: nobody's hand is empty and the deck is not empty.
          */
 
-        // set up our players - using an ArrayList simplifies adding multiple players
+        // set up our arraylist to store our players - using an ArrayList simplifies adding multiple players
         ArrayList<Player> gamePlayers = new ArrayList<Player>();
         // and initialize the game
         initializeGame(gamePlayers);
 
+        // and start playing the game
+        playGame(gamePlayers);
+
+        //Report the final results of the game
+        System.out.println("\nYou have chosen to end the game.");
+        reportGameScores(gamePlayers, "won");
+        System.out.println("\nThank you for playing!");
+
+        // close the scanner when the game is over
+        scanner.close();
+    }
+
+    private static void initializeGame(ArrayList<Player> gP) {
+        // create our deck, scanner, and pop the card off gameDeck to create our current discarded card
+        gameDeck = new Deck();
+        discardPile = new Pile();
+        discard = gameDeck.drawCard();
+        // DONE: Implement superclass Pile so discard my_pile can be recycled in "reshuffling" versions of game.
+        scanner = new Scanner(System.in);
+
+        // and set up our players
+        gP.add(new Human(getPlayerName()));
+        gP.add(new PC());
+
+        // randomize who goes first
+        Random r_num = new Random();
+        int p_num = r_num.nextInt(2);
+        // two player game, if computer picked, move human player to end of arraylist
+        if (p_num == 1) gP.add(gP.remove(0));
+        // announce who goes first
+        System.out.println(gP.get(0).getName() + " plays first!");
+
+    }
+
+    private static void playGame(ArrayList<Player> gamePlayers) {
+        // this code is the beating heart of the game - players keep taking turns until human player decides to quit.
         String keep_playing;  // needed to facilitate exiting while-true loop
         while (true) {
             System.out.println("Shuffling deck...");
@@ -65,36 +101,6 @@ public class CrazyEightsGame {
                 }
             }
         }
-
-        //Report the final results of the game
-        System.out.println("\nYou have chosen to end the game.");
-        reportGameScores(gamePlayers, "won");
-        System.out.println("\nThank you for playing!");
-
-        // close the scanner when the game is over
-        scanner.close();
-    }
-
-    private static void initializeGame(ArrayList<Player> gP) {
-        // create our deck, scanner, and pop the card off gameDeck to create our current discarded card
-        gameDeck = new Deck();
-        discardPile = new Pile();
-        discard = gameDeck.drawCard();
-        // DONE: Implement superclass Pile so discard my_pile can be recycled in "reshuffling" versions of game.
-        scanner = new Scanner(System.in);
-
-        // and set up our players
-        gP.add(new Human(getPlayerName()));
-        gP.add(new PC());
-
-        // randomize who goes first
-        Random r_num = new Random();
-        int p_num = r_num.nextInt(2);
-        // two player game, if computer picked, move human player to end of arraylist
-        if (p_num == 1) gP.add(gP.remove(0));
-        // announce who goes first
-        System.out.println(gP.get(0).getName() + " plays first!");
-
     }
 
     private static boolean isGameOver(ArrayList<Player> gp) {
