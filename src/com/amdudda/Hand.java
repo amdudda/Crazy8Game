@@ -14,7 +14,7 @@ public class Hand {
     // Done: this seeds a bunch of cards from the draw my_pile - need to code that first
     public Hand() {
         this.myHand = new ArrayList<Card>();
-        // draw cards from the deck till we've got a starting myHand
+        // draw cards from the deck till we've got a starting hand
         for (int i=0;i<START_SIZE; i++) {
             this.myHand.add(CrazyEightsGame.gameDeck.drawCard());
         } // end for
@@ -22,7 +22,7 @@ public class Hand {
 
     @Override
     public String toString(){
-        // prints out the contents of the myHand
+        // prints out the contents of the hand
         String list_of_cards = "\u001B[0m";  // make sure to set any colors back to their default before printing the list
         for (int i=0; i<this.myHand.size(); i++) {
             list_of_cards += (i+1) + ".) " + this.getMyHand().get(i) + "\n";

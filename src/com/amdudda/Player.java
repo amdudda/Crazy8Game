@@ -25,7 +25,7 @@ public abstract class Player {
 
     @Override
     public String toString() {
-        return this.name + "'s myHand is: \n" + playerHand.toString();
+        return this.name + "'s hand is: \n" + playerHand.toString();
     }
 
     // various setters & getters
@@ -79,8 +79,10 @@ public abstract class Player {
         CrazyEightsGame.discardPile.addCard(c);
         this.playerHand.dropCard(c);
         System.out.println(Colorize(this.name + " plays a " + c));
-        System.out.println(Colorize(this.name + " has " + this.playerHand.getSize() + " card(s) in myHand."));
-        if (CrazyEightsGame.discard.getValue() == 8) { CrazyEightsGame.discard.setSuit(pickSuit()); }
+        System.out.println(Colorize(this.name + " has " + this.playerHand.getSize() + " card(s) in their hand."));
+        // need to make sure player hasn't just played their last card before prompting for suit.
+        // otherwise, bug in code causes new round to begin immediately.
+        if (CrazyEightsGame.discard.getValue() == 8 && this.playerHand.getSize() != 0) { CrazyEightsGame.discard.setSuit(pickSuit()); }
     }
 
     public String printRoundScore() { return Colorize(this.roundscore + " points."); }

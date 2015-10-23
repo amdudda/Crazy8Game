@@ -26,7 +26,7 @@ public class Human extends Player {
         boolean valid_handindex, candraw;
         /*
         Human turn's logic:
-        1.  list out myHand and add option 0 = draw a card
+        1.  list out player's hand and add option 0 = draw a card
         2.  if player chooses a legal play, play the card
         3.  else if == 0, draw a card and loop
         4.  else loop and pick again
@@ -103,6 +103,9 @@ public class Human extends Player {
         }
         suit_picked = suits[choice];
         System.out.println(Colorize(this.name + " declares " + suit_picked));
+        // I *think* moving scanner to the next line will fix the edge-case bug for when an 8 is played as the last
+        // card, but I've also updated Player object so it doesn't ask for a suit if the player's hand is empty.
+        s.nextLine();
         return suit_picked;
     }
 }
