@@ -22,7 +22,7 @@ public class Human extends Player {
     public void takeTurn() {
         Scanner s = CrazyEightsGame.scanner;
         int selection = 0;
-        Card picked = new Card("fakesuit",-1);
+        Card picked = new Card("fakesuit", -1);
         boolean valid_handindex, candraw;
         /*
         Human turn's logic:
@@ -88,7 +88,7 @@ public class Human extends Player {
         // return "Hearts"; // fake data for now, we''l code this later once i've thought through logic a bit
         Scanner s = CrazyEightsGame.scanner;
         String suit_picked;
-        String[] suits = {"Hearts","Diamonds","Clubs","Spades"};
+        String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
         int choice;
         while (true) {
             System.out.println("Pick a suit:");
@@ -97,9 +97,16 @@ public class Human extends Player {
                 System.out.println(i + ".) " + suit);
                 i++;
             }
-            choice = s.nextInt() - 1;
-            if (choice >=0 && choice < suits.length) { break; }  // can break out of loop if user makes valid selection
-            System.out.println("Please make a valid selection.");
+            try {
+                choice = s.nextInt() - 1;
+                if (choice >= 0 && choice < suits.length) {
+                    break;
+                }  // can break out of loop if user makes valid selection
+                System.out.println("Please make a valid selection.");
+            } catch (InputMismatchException ime) {
+                System.out.println("Please enter a number.");
+                s.nextLine();
+            }
         }
         suit_picked = suits[choice];
         System.out.println(Colorize(this.name + " declares " + suit_picked));
