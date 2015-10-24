@@ -50,6 +50,7 @@ public class CrazyEightsGame {
 
         // and set up our players
         gP.add(new Human(getPlayerName()));
+        // gP.add(new Human("Player2")); // tested - game works for 3 players!  (Code below is wrong randomization for that, though.)
         gP.add(new PC());
 
         // randomize who goes first - use gp.size so we can update code to handle multiple players.
