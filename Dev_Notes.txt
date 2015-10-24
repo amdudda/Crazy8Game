@@ -1,0 +1,19 @@
+Crazy Eights game notes:
+
+The game is set up for one person vs. the computer.  The program accepts one human player's name and randomly picks a player to start the game.
+
+Play proceeds until either (a) a player ends their turn with no cards in hand or (b) a player passes after the last card is drawn from the deck.
+
+After a round of play, the computer reports both a round score and an ongoing game score.  There is an option to continue with multiple rounds of play.  When the player chooses not to continue with the game, the program reports the final game score and exits.
+
+Development notes:
+
+I coded this so as to make it as easy as possible to expand to a multiplayer mode.  The game will actually work with three players (I tested this), but there is no masking of hands between players, so players can easily cheat by scrolling up to read each others' hands.
+
+I set things up so that the top card of the discard is distinct from the card-in-play, so that when a suit is declared for an 8, the card in play can be updated to the new suit.  This has two benefits.  First, it makes it easy for the player to track which suit they're actually trying to match.  Second, it preserves the value of the top card of the discard pile so it can be reshuffled into a new draw pile without having to go through and fix the eights' suits, should that feature ever get implemented/turned on.
+
+I created a Pile object to facilitate extending the game to allow the discard pile to be converted into a draw pile, and have included some code to allow for that conversion, but I have neither implemented nor tested this for game play.  I have not decided whether the discard pile should really be a child object of Pile, or if I should leave the current structure as-is, but I'm leaning towards a new child object, because there are some things that Deck shouldn't really be inheriting from Pile.
+
+Known bugs:
+
+There is an edge case in which a Human player can have an 8 as their last card.  There is a bug in the Human.pickSuit() code that causes a new game to start immediately after a suit is declared.  I've papered over this problem by preventing pickSuit from running in Player.playCard() if the 8 was the last card in a player's hand, because there's no reason to bother picking a suit once game play is over.  There might be other games where play could continue even after a hand is emptied, in which case, this bug might resurface if the code is re-used.
