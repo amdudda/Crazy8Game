@@ -1,7 +1,6 @@
 package com.amdudda;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -45,6 +44,7 @@ public class CrazyEightsGame {
         gameDeck = new Deck();
         discardPile = new Pile();
         discard = gameDeck.drawCard();
+        discardPile.addCard(discard);
         // DONE: Implement superclass Pile so discard my_pile can be recycled in "reshuffling" versions of game.
         scanner = new Scanner(System.in);
 
@@ -95,12 +95,20 @@ public class CrazyEightsGame {
                 break;
             } else {
                 // if the game continues, we need to create a new deck and restart play.
-                gameDeck = new Deck();
-                discard = gameDeck.drawCard();
-                for (Player p:gamePlayers) {
-                    p.playerHand = new Hand();
-                }
+               startNewRound(gamePlayers);
             }
+        }
+    }
+
+    private static void startNewRound(ArrayList<Player> gamePlayers) {
+        // creates new draw & discard piles, and reseeds players' hands.
+        gameDeck = new Deck();
+        discard = gameDeck.drawCard();
+        // don't forget to clear and re-seed the discard pile
+        discardPile.getMy_pile().clear();
+        discardPile.addCard(discard);
+        for (Player p:gamePlayers) {
+            p.playerHand = new Hand();
         }
     }
 
