@@ -50,14 +50,20 @@ public class CrazyEightsGame {
 
         // and set up our players
         gP.add(new Human(getPlayerName()));
-        // gP.add(new Human("Player2")); // tested - game works for 3 players!  (Code below is wrong randomization for that, though.)
+        // gP.add(new Human("Player2")); // tested - game works for 3 players!
         gP.add(new PC());
 
         // randomize who goes first - use gp.size so we can update code to handle multiple players.
         Random r_num = new Random();
         int p_num = r_num.nextInt(gP.size());
-        // two player game: if computer picked, move human player to end of arraylist
-        if (p_num == 1) gP.add(gP.remove(0));
+        // if the random number is not zero, shift the array so the nth player is the zero-th player.
+        if (p_num !=0 ) {
+            for (int i = 0; i<p_num; i++) {
+                // keep moving players to the end of the array until the selected player is first in the list.
+                gP.add(gP.remove(0));
+            }
+        }
+
         // announce who goes first
         System.out.println(gP.get(0).getName() + " plays first!");
 
