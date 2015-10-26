@@ -63,17 +63,17 @@ public class Human extends Player {
             // act on the user's choice
             if (index >= this.playerHand.getSize() || index < -1) {
                 System.out.println("You have chosen an invalid option.  Please try again.");
-            } else if (valid_handindex && !picked.isLegalToPlayOn(CrazyEightsGame.discard)) {
+            } else if (valid_handindex && !picked.isLegalToPlayOn(CrazyEightsGame.card_in_play)) {
                 // illegal play chosen, pick again
-                System.out.println("The " + picked + " cannot be played on the " + CrazyEightsGame.discard + ".");
-            } else if (valid_handindex && picked.isLegalToPlayOn(CrazyEightsGame.discard)) {
+                System.out.println("The " + picked + " cannot be played on the " + CrazyEightsGame.card_in_play + ".");
+            } else if (valid_handindex && picked.isLegalToPlayOn(CrazyEightsGame.card_in_play)) {
                 // valid play picked, play it and break out of loop
                 playCard(picked);
                 break;
             } else if (index == -1 && candraw) {
                 // draw a card
                 this.drawCard(CrazyEightsGame.gameDeck);
-                System.out.println("The top of the discard pile is still a " + CrazyEightsGame.discard + ".");
+                System.out.println("The top of the card_in_play pile is still a " + CrazyEightsGame.card_in_play + ".");
             } else {
                 // presumably: (index == -1 && !candraw)
                 // DONE: pass as a valid play.

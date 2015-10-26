@@ -33,7 +33,7 @@ public abstract class Pile {
         return this.my_pile.size();
     }
 
-    // current implementation doesn't allow drawing from a discard my_pile.
+    // current implementation doesn't allow drawing from a card_in_play my_pile.
     // therefore drawCard() is staying in Deck subclass to prevent accidental use.
 
 }

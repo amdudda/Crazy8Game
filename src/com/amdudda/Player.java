@@ -1,7 +1,5 @@
 package com.amdudda;
 
-import java.awt.*;
-
 /**
  * Created by amdudda on 10/12/15.
  */
@@ -73,22 +71,23 @@ public abstract class Player {
 
     public void playCard(Card c) {
         // DONE: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
-        // updates the value of the top of the discardPile, updates the value of discard,
+        // updates the value of the top of the discardPile, updates the value of card_in_play,
         // and removes the card from player's myHand.
-        CrazyEightsGame.discard = c;
+        CrazyEightsGame.card_in_play = new Card(c.getSuit(),c.getValue());
         CrazyEightsGame.discardPile.addCard(c);
         this.playerHand.dropCard(c);
         System.out.println(Colorize(this.name + " plays a " + c));
         System.out.println(Colorize(this.name + " has " + this.playerHand.getSize() + " card(s) in their hand."));
         // need to make sure player hasn't just played their last card before prompting for suit.
         // otherwise, bug in code causes new round to begin immediately.
-        if (CrazyEightsGame.discard.getValue() == 8 && this.playerHand.getSize() != 0) {
+        if (CrazyEightsGame.card_in_play.getValue() == 8 && this.playerHand.getSize() != 0) {
             // pick a new suit and set the 8's suit to be that suit
-            CrazyEightsGame.discard.setSuit(pickSuit());
-            // also update the color displayed for the top of the discard pile
-            CrazyEightsGame.discard.fixColor();
-            System.out.println("Top of the discard pile is now " + CrazyEightsGame.discard);
+            CrazyEightsGame.card_in_play.setSuit(pickSuit());
+            // also update the color displayed for the top of the card_in_play pile
+            CrazyEightsGame.card_in_play.fixColor();
+            System.out.println("Top of the card_in_play pile is now " + CrazyEightsGame.card_in_play);
         }
+        System.out.println(CrazyEightsGame.discardPile.topOfPile());
     }
 
     public String printRoundScore() { return Colorize(this.roundscore + " points."); }

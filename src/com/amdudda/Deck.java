@@ -48,8 +48,8 @@ public class Deck extends Pile {
         // shuffle the deck
         Collections.shuffle(this.my_pile);
         // QUESTION: do we want to automatically clear pile_of_cards?
-        // For crazy eights, yes, because we want to have a new discard my_pile
-        // DONE: top of discard stays on play area and is the seed for the new discard my_pile.
+        // For crazy eights, yes, because we want to have a new card_in_play my_pile
+        // DONE: top of card_in_play stays on play area and is the seed for the new card_in_play my_pile.
     }
 
     // getter for deck - duplicates getMy_pile(), but useful for nomenclature match

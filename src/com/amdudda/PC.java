@@ -19,7 +19,7 @@ public class PC extends Player {
 //    DONE: pick a card to play
     private Card pickCard(){
         // tells the computer what card to pick
-        Card disc = CrazyEightsGame.discard;
+        Card disc = CrazyEightsGame.card_in_play;
 
         // first try to find a numeric match
         for (Card c:this.playerHand.getMyHand()) {
@@ -47,7 +47,7 @@ public class PC extends Player {
     // take a turn!
     public void takeTurn() {
         Card card = this.pickCard();
-        Card disc = CrazyEightsGame.discard;
+        Card disc = CrazyEightsGame.card_in_play;
         //int decksize = CrazyEightsGame.gameDeck.getSize();
         // so long the card picked is not a legal play and there are cards available to draw, draw a new card, then try to pick a card again
         while (!(card.isLegalToPlayOn(disc)) && CrazyEightsGame.gameDeck.getSize() > 0) {

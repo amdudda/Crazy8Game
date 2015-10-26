@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class CrazyEightsGame {
 
     public static Deck gameDeck;  // the game only has a single deck to draw from
-    public static DiscardPile discardPile; // the discard pile, in case we want to implement reshuffling.
-    public static Card discard; // and only one card to worry about in actual gameplay - if an 8, may be different from top of discardPile.
+    public static DiscardPile discardPile; // the card_in_play pile, in case we want to implement reshuffling.
+    public static Card card_in_play; // and only one card to worry about in actual gameplay - if an 8, may be different from top of discardPile.
     public static Scanner scanner;  // scanner for player input
 
     public static void main(String[] args) {
@@ -43,9 +43,9 @@ public class CrazyEightsGame {
         // create our deck, scanner, and pop the card off gameDeck to create our current discarded card
         gameDeck = new Deck();
         discardPile = new DiscardPile();
-        discard = gameDeck.drawCard();
-        discardPile.addCard(discard);
-        // DONE: Implement superclass Pile so discard my_pile can be recycled in "reshuffling" versions of game.
+        card_in_play = gameDeck.drawCard();
+        discardPile.addCard(card_in_play);
+        // DONE: Implement superclass Pile so card_in_play my_pile can be recycled in "reshuffling" versions of game.
         scanner = new Scanner(System.in);
 
         // and set up our players
@@ -77,7 +77,7 @@ public class CrazyEightsGame {
             System.out.println("Dealing cards...");
 
             System.out.println("The top card of the deck is flipped over and play begins!");
-            System.out.println("The current top of the discard my_pile is a " + discard + ".");
+            System.out.println("The current top of the card_in_play my_pile is a " + card_in_play + ".");
             while (!isGameOver(gamePlayers)) {
                 for (Player p : gamePlayers) {
                     p.takeTurn();
@@ -107,12 +107,12 @@ public class CrazyEightsGame {
     }
 
     private static void startNewRound(ArrayList<Player> gamePlayers) {
-        // creates new draw & discard piles, and reseeds players' hands.
+        // creates new draw & card_in_play piles, and reseeds players' hands.
         gameDeck = new Deck();
-        discard = gameDeck.drawCard();
-        // don't forget to clear and re-seed the discard pile
+        card_in_play = gameDeck.drawCard();
+        // don't forget to clear and re-seed the card_in_play pile
         discardPile.getMy_pile().clear();
-        discardPile.addCard(discard);
+        discardPile.addCard(card_in_play);
         for (Player p:gamePlayers) {
             p.playerHand = new Hand();
         }

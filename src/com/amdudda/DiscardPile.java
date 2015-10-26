@@ -17,8 +17,8 @@ public class DiscardPile extends Pile {
     protected Deck toDeck() {
         // TODO: HAS NOT BEEN TESTED - not implemented in this version of the game!
         /*
-         Top of discard stays on play area and is the seed for the new discard pile.
-         so we need a way to convert discard pile to a deck without messing with the
+         Top of card_in_play stays on play area and is the seed for the new card_in_play pile.
+         so we need a way to convert card_in_play pile to a deck without messing with the
          second deck constructor.
         */
         // convert a my_pile to a deck
