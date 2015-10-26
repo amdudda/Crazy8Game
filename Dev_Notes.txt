@@ -12,7 +12,7 @@ I coded this so as to make it as easy as possible to expand to a multiplayer mod
 
 I set things up so that the top card of the discard is distinct from the card-in-play, so that when a suit is declared for an 8, the card in play can be updated to the new suit.  This has two benefits.  First, it makes it easy for the player to track which suit they're actually trying to match.  Second, it preserves the value of the top card of the discard pile so it can be reshuffled into a new draw pile without having to go through and fix the eights' suits, should that feature ever get implemented/turned on.
 
-I created a Pile object to facilitate extending the game to allow the discard pile to be converted into a draw pile, and have included some code to allow for that conversion, but I have neither implemented nor tested this for game play.  I have not decided whether the discard pile should really be a child object of Pile, or if I should leave the current structure as-is, but I'm leaning towards a new child object, because there are some things that Deck shouldn't really be inheriting from Pile.
+I created a Pile object to facilitate extending the game to allow the discard pile to be converted into a draw pile, and have included some code to allow for that conversion, but I have neither implemented nor tested this for game play.  I set up DiscardPile as a child object because there are some things that Deck shouldn't really be inheriting from Pile.  This let me set Pile to be an abstract class.
 
 Known bugs:
 
