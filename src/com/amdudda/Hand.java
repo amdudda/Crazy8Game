@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * Created by amdudda on 10/12/2015.
  */
 public class Hand {
-    // this is an arraylist holding a bunch of cards
-    protected ArrayList<Card> myHand;
+
+    protected ArrayList<Card> myHand; // this is an ArrayList holding a bunch of cards
     private static final int START_SIZE = 5;  // makes default hand size easy to alter
 
     // Constructor

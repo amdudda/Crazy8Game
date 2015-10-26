@@ -48,7 +48,6 @@ public class PC extends Player {
     public void takeTurn() {
         Card card = this.pickCard();
         Card disc = CrazyEightsGame.card_in_play;
-        //int decksize = CrazyEightsGame.gameDeck.getSize();
         // so long the card picked is not a legal play and there are cards available to draw, draw a new card, then try to pick a card again
         while (!(card.isLegalToPlayOn(disc)) && CrazyEightsGame.gameDeck.getSize() > 0) {
             this.drawCard(CrazyEightsGame.gameDeck);

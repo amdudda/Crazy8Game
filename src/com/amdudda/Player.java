@@ -71,8 +71,9 @@ public abstract class Player {
 
     public void playCard(Card c) {
         // DONE: how to declare suit when an 8 is played?  reset the card's suit attribute during play?
-        // updates the value of the top of the discardPile, updates the value of card_in_play,
-        // and removes the card from player's myHand.
+        // adds the card to the top of discardPile, updates the value of card_in_play,
+        // and removes the card from player's myHand.  Remember that card in play is distinct from top
+        // of discardPile!
         CrazyEightsGame.card_in_play = new Card(c.getSuit(),c.getValue());
         CrazyEightsGame.discardPile.addCard(c);
         this.playerHand.dropCard(c);

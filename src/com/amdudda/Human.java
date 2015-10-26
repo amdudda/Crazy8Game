@@ -85,7 +85,6 @@ public class Human extends Player {
 
     public String pickSuit() {
         // lets user pick a suit when they play an 8.
-        // return "Hearts"; // fake data for now, we''l code this later once i've thought through logic a bit
         Scanner s = CrazyEightsGame.scanner;
         String suit_picked;
         String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};

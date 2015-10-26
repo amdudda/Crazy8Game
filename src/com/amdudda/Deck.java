@@ -36,9 +36,8 @@ public class Deck extends Pile {
     }  // end constructor
 
 
-    // DONE: Second constructor that enables me to convert an existing Stack
-    // (or do I want to keep Pile object?) to a Deck.  Not actually used in
-    // implementation, so this is mostly an intellectual exercise.
+    // DONE: Second constructor that enables me to convert an existing Pile
+    // to a Deck.  Not actually used in this implementation, so this is mostly an intellectual exercise.
     public Deck(Pile pile_of_cards) {
         // TODO: HAS NOT BEEN TESTED - not implemented in this version of the game!
         // overloading to let me convert a Stack (Pile?  can be coded now and final decision made later- minimal revisions needed.) to a Deck
@@ -47,9 +46,6 @@ public class Deck extends Pile {
         this.my_pile.addAll(pile_of_cards.getMy_pile());
         // shuffle the deck
         Collections.shuffle(this.my_pile);
-        // QUESTION: do we want to automatically clear pile_of_cards?
-        // For crazy eights, yes, because we want to have a new card_in_play my_pile
-        // DONE: top of card_in_play stays on play area and is the seed for the new card_in_play my_pile.
     }
 
     // getter for deck - duplicates getMy_pile(), but useful for nomenclature match
