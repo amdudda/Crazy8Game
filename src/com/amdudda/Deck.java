@@ -44,7 +44,7 @@ public class Deck extends Pile {
         this.my_pile = new Stack<Card>();
         // copy the my_pile of cards to the deck
         this.my_pile.addAll(pile_of_cards.getMy_pile());
-        // shuffle the deck
+        // shuffle the deck -- I got this from Margaret & Malcolm
         Collections.shuffle(this.my_pile);
     }
 
